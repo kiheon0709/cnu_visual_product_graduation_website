@@ -31,7 +31,7 @@ export default function RootLayout({
           }}
         >
           <Sidebar />
-          <main className="ml-[var(--sidebar-w)] w-[calc(100vw-var(--sidebar-w))] min-h-screen">
+          <main className="max-[393px]:w-full max-[393px]:ml-0 max-[393px]:pt-[min(calc(116px*100vw/393px),116px)] min-[394px]:ml-[var(--sidebar-w)] min-[394px]:w-[calc(100vw-var(--sidebar-w))] min-h-screen">
             {children}
           </main>
         </div>
