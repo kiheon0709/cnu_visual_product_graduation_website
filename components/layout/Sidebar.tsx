@@ -3,12 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   const navItems = [
     { name: "Project", href: "/project" },
@@ -27,32 +27,30 @@ export default function Sidebar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+      const lastScrollY = lastScrollYRef.current;
+
       // 모바일에서만 스크롤 감지 (393px 이하)
       if (window.innerWidth <= 393) {
-        // 스크롤을 아래로 내릴 때 (화면을 아래로 내릴 때) - 메뉴바 숨김
-        if (currentScrollY > lastScrollY && currentScrollY > 50) {
-          setIsVisible(false);
-        } 
-        // 스크롤을 위로 올릴 때 - 메뉴바 표시
-        else if (currentScrollY < lastScrollY) {
-          setIsVisible(true);
-        }
-        // 최상단일 때는 항상 표시
-        else if (currentScrollY <= 50) {
-          setIsVisible(true);
-        }
+        setIsVisible((prev) => {
+          if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            return false;
+          }
+          if (currentScrollY < lastScrollY || currentScrollY <= 50) {
+            return true;
+          }
+          return prev;
+        });
       } else {
         // 웹 버전에서는 항상 표시
         setIsVisible(true);
       }
-      
-      setLastScrollY(currentScrollY);
+
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <aside className={`fixed left-0 top-0 bg-white transition-transform duration-300 ease-in-out
@@ -207,4 +205,3 @@ export default function Sidebar() {
     </aside>
   );
 }
-
