@@ -25,9 +25,9 @@ export default function RootLayout({
         <div
           className="flex min-h-screen w-screen"
           style={{
-            // 5:19 비율(= 5/24 ≈ 20.833vw)을 기본으로, 최소 240px, 최대 400px로 클램프
+            // 5:19 비율(= 5/24 ≈ 20.833vw)을 기본으로, 최대 400px
             // @ts-ignore - CSS var 사용
-            "--sidebar-w": "clamp(240px, 20.833vw, 400px)",
+            "--sidebar-w": "min(20.833vw, 400px)",
           }}
         >
           <Sidebar />
