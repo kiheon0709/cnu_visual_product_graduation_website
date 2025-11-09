@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "충남대학교 디자인창의학과 시각제품디자인전공 졸업전시",
+  title: "충남대학교 디자인창의학과 시각제품디자인 졸업전시",
   description: "CNUD Graduation Exhibition Archive",
 };
 

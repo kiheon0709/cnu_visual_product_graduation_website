@@ -1,4 +1,4 @@
-# 충남대학교 디자인창의학과 시각제품디자인전공 졸업전시 웹 디자인 스펙
+# 충남대학교 디자인창의학과 시각제품디자인 졸업전시 웹 디자인 스펙
 
 ## 전체 레이아웃 구조
 
@@ -35,8 +35,7 @@
 - 메뉴바 너비: 400px
 - 상단 로고: 48px × 48px
 - 로고와 텍스트 간 간격: 14px
-- 상단 한글 문구: Poppins SemiBold, 20px, 행간 26px, 자간 -4
-- 상단 영문 문구: Poppins SemiBold, 12px, 행간 18px, 자간 -4
+- 상단 문구: Poppins SemiBold, 20px, 행간 26px, 자간 -4
 - 하단 메뉴 텍스트: Poppins Regular/SemiBold, 54px, 행간 40px, 자간 -4
 - 메뉴 항목 간 간격: 51px
 - 메뉴 컨테이너와 소셜 컨테이너 간 간격: 73px
@@ -46,8 +45,7 @@
 - 메뉴바 너비: 300px
 - 상단 로고: 38px × 38px
 - 로고와 텍스트 간 간격: 12px
-- 상단 한글 문구: Poppins SemiBold, 16px, 행간 20.8px, 자간 -4
-- 상단 영문 문구: Poppins SemiBold, PC 기준 12px/18px 값을 동일 비율로 스케일링, 자간 -4
+- 상단 문구: Poppins SemiBold, 16px, 행간 20.8px, 자간 -4
 - 하단 메뉴 텍스트: Regular/SemiBold, 46px, 행간 40px, 자간 -4
 - 메뉴 항목 간 간격: 32px
 - 메뉴 컨테이너와 소셜 컨테이너 간 간격: 73px
@@ -57,8 +55,7 @@
 - 메뉴바 너비: 248px
 - 상단 로고: 36px × 36px
 - 로고와 텍스트 간 간격: 8px
-- 상단 한글 문구: Poppins SemiBold, 12px, 행간 18px, 자간 -4
-- 상단 영문 문구: Poppins SemiBold, PC 기준 12px/18px 값을 동일 비율로 스케일링, 자간 -4
+- 상단 문구: Poppins SemiBold, 12px, 행간 18px, 자간 -4
 - 하단 메뉴 텍스트: Regular/SemiBold, 46px, 행간 40px, 자간 -4
 - 메뉴 항목 간 간격: 32px
 - 메뉴 컨테이너와 소셜 컨테이너 간 간격: 73px

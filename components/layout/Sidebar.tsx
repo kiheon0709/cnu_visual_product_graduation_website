@@ -16,8 +16,6 @@ interface MetricsConfig {
   logoTextGap: number;
   titleFont: number;
   titleLineHeight: number;
-  subtitleFont: number;
-  subtitleLineHeight: number;
   menuFont: number;
   menuLineHeight: number;
   menuGap: number;
@@ -36,8 +34,6 @@ interface ComputedMetrics {
   logoTextGap: number;
   titleFont: number;
   titleLineHeight: number;
-  subtitleFont: number;
-  subtitleLineHeight: number;
   menuFont: number;
   menuLineHeight: number;
   menuGap: number;
@@ -59,8 +55,6 @@ const BASE_METRICS: Record<Breakpoint, MetricsConfig> = {
     logoTextGap: 14,
     titleFont: 20,
     titleLineHeight: 26,
-    subtitleFont: 12,
-    subtitleLineHeight: 18,
     menuFont: 54,
     menuLineHeight: 40,
     menuGap: 51,
@@ -78,8 +72,6 @@ const BASE_METRICS: Record<Breakpoint, MetricsConfig> = {
     logoTextGap: 12,
     titleFont: 16,
     titleLineHeight: 20.8,
-    subtitleFont: 12,
-    subtitleLineHeight: 18,
     menuFont: 46,
     menuLineHeight: 40,
     menuGap: 32,
@@ -97,8 +89,6 @@ const BASE_METRICS: Record<Breakpoint, MetricsConfig> = {
     logoTextGap: 8,
     titleFont: 12,
     titleLineHeight: 18,
-    subtitleFont: 12,
-    subtitleLineHeight: 18,
     menuFont: 46,
     menuLineHeight: 40,
     menuGap: 32,
@@ -116,8 +106,6 @@ const BASE_METRICS: Record<Breakpoint, MetricsConfig> = {
     logoTextGap: 6,
     titleFont: 12,
     titleLineHeight: 16,
-    subtitleFont: 8,
-    subtitleLineHeight: 12,
     menuFont: 16,
     menuLineHeight: 18.1,
     menuGap: 20,
@@ -161,8 +149,6 @@ const computeMetrics = (width: number, pathname: string): ComputedMetrics => {
     logoTextGap: scaleValue(config.logoTextGap),
     titleFont: scaleValue(config.titleFont),
     titleLineHeight: scaleValue(config.titleLineHeight),
-    subtitleFont: scaleValue(config.subtitleFont),
-    subtitleLineHeight: scaleValue(config.subtitleLineHeight),
     menuFont: scaleValue(config.menuFont),
     menuLineHeight: scaleValue(config.menuLineHeight),
     menuGap: scaleValue(config.menuGap),
@@ -280,11 +266,8 @@ export default function Sidebar() {
             {/* 텍스트 영역 */}
             <div className="flex flex-col">
               <h1 className="text-left font-semibold text-primary text-[min(calc(12px*100vw/393px),12px)] leading-[16px] tracking-[-4%]">
-                충남대학교 디자인창의학과 시각제품디자인전공 졸업전시
+                충남대학교 디자인창의학과<br />시각제품디자인 졸업전시
               </h1>
-              <p className="text-left font-semibold text-primary m-0 text-[min(calc(8px*100vw/393px),8px)] leading-normal tracking-[-4%]">
-                CNUD Graduation Exhibition Archive
-              </p>
             </div>
           </div>
         </Link>
@@ -361,21 +344,8 @@ export default function Sidebar() {
                       }
                 }
               >
-                충남대학교 디자인 창의학과<br />시각제품디자인전공 졸업전시
+                충남대학교 디자인창의학과<br />시각제품디자인 졸업전시
               </h1>
-              <p
-                className="text-left font-semibold text-primary m-0 tracking-[-4%]"
-                style={
-                  isMobile
-                    ? undefined
-                    : {
-                        fontSize: metrics.subtitleFont,
-                        lineHeight: formattedValue(metrics.subtitleLineHeight),
-                      }
-                }
-              >
-                CNUD Graduation Exhibition Archive
-              </p>
             </div>
           </div>
         </div>
