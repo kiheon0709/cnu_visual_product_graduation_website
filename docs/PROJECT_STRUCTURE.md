@@ -5,61 +5,59 @@
 ```
 start/
 ├── app/                          # Next.js App Router
-│   ├── layout.tsx               # 루트 레이아웃 (좌측 고정 메뉴 포함)
-│   ├── page.tsx                 # 홈페이지
-│   ├── globals.css              # 전역 스타일
-│   ├── project/                 # 프로젝트 페이지
-│   │   ├── page.tsx            # 프로젝트 리스트
-│   │   └── [slug]/page.tsx     # 프로젝트 상세
-│   ├── designer/                # 디자이너 페이지
-│   │   ├── page.tsx            # 디자이너 리스트
-│   │   └── [slug]/page.tsx     # 디자이너 상세
-│   ├── archive/                 # 아카이브 페이지
-│   │   └── page.tsx
-│   └── artwork/                 # 작품 상세 페이지
-│       └── [slug]/page.tsx
+│   ├── layout.tsx               # 루트 레이아웃 (좌측 고정 메뉴 포함) ✅
+│   ├── page.tsx                 # 홈페이지 ✅
+│   ├── globals.css              # 전역 스타일 ✅
+│   └── project/                 # 프로젝트 페이지
+│       └── page.tsx            # 프로젝트 리스트 ✅
+│       # [slug]/page.tsx       # 프로젝트 상세 (예정)
+│   # designer/                  # 디자이너 페이지 (예정)
+│   # archive/                   # 아카이브 페이지 (예정)
+│   # artwork/                   # 작품 상세 페이지 (예정)
 ├── components/                  # 재사용 컴포넌트
 │   ├── layout/
-│   │   ├── Sidebar.tsx         # 좌측 고정 메뉴바 (Frame 138)
-│   │   ├── Header.tsx          # 모바일 헤더
-│   │   └── Footer.tsx          # 푸터
-│   ├── project/
-│   │   ├── ProjectCard.tsx     # 프로젝트 카드 (호버 기능)
-│   │   └── ProjectGrid.tsx     # 프로젝트 그리드
-│   ├── designer/
-│   │   ├── DesignerCard.tsx    # 디자이너 카드
-│   │   └── DesignerGrid.tsx    # 디자이너 그리드
-│   ├── archive/
-│   │   └── ArchiveCard.tsx     # 아카이브 카드
-│   └── ui/                     # 기본 UI 컴포넌트
-│       ├── Button.tsx
-│       ├── Icon.tsx            # 소셜 아이콘 등
-│       └── Typography.tsx
+│   │   └── Sidebar.tsx         # 좌측 고정 메뉴바 ✅
+│   │   # Footer.tsx             # 푸터 (예정)
+│   └── project/                # 프로젝트 컴포넌트 (빈 폴더)
+│       # ProjectCard.tsx        # 프로젝트 카드 (예정)
+│       # ProjectGrid.tsx        # 프로젝트 그리드 (예정)
+│   # designer/                  # 디자이너 컴포넌트 (예정)
+│   # archive/                   # 아카이브 컴포넌트 (예정)
+│   # ui/                        # 기본 UI 컴포넌트 (예정)
 ├── lib/                        # 유틸리티
-│   ├── data/                   # 데이터 관리
-│   │   ├── projects.ts
-│   │   ├── designers.ts
-│   │   └── archive.ts
-│   └── utils/
-│       └── cn.ts               # className 유틸
+│   └── data/                   # 데이터 관리 (빈 폴더)
+│       # projects.ts            # 프로젝트 데이터 (예정)
+│       # designers.ts           # 디자이너 데이터 (예정)
+│       # archive.ts              # 아카이브 데이터 (예정)
+│   # utils/                     # 유틸리티 함수 (예정)
+│       # cn.ts                  # className 유틸 (예정)
 ├── public/
-│   ├── images/                 # 이미지 파일
-│   │   ├── projects/           # 프로젝트 이미지
-│   │   ├── designers/          # 디자이너 프로필 이미지
-│   │   ├── archive/            # 아카이브 이미지
-│   │   └── main-poster.jpg     # 메인 포스터
-│   └── fonts/                  # 폰트 파일 (필요시)
-├── styles/
-│   └── globals.css             # 글로벌 스타일, Tailwind 설정
+│   └── images/                 # 이미지 파일
+│       ├── projects/           # 프로젝트 이미지
+│       │   ├── gallery/        # 프로젝트 갤러리 이미지
+│       │   └── thumbnails/     # 프로젝트 썸네일 이미지
+│       ├── designers/          # 디자이너 프로필 이미지
+│       │   ├── profile-large/  # 큰 프로필 이미지
+│       │   └── profile-small/  # 작은 프로필 이미지
+│       ├── archive/            # 아카이브 이미지
+│       ├── headers/            # 헤더 이미지
+│       ├── logo/               # 로고 이미지
+│       └── main/               # 메인 이미지
+│           └── 홈메인포스터.png
+├── docs/                       # 문서
+│   ├── code-review/            # 코드 리뷰 문서
+│   ├── DESIGN_SPEC.md          # 디자인 스펙 문서
+│   ├── PROJECT_PLAN.md         # 프로젝트 계획서
+│   └── PROJECT_STRUCTURE.md    # 프로젝트 구조 문서 (이 파일)
 ├── types/                      # TypeScript 타입 정의
-│   └── index.ts
-├── DESIGN_SPEC.md              # 디자인 스펙 문서
-├── PROJECT_PLAN.md             # 프로젝트 계획서
-├── PROJECT_STRUCTURE.md        # 프로젝트 구조 문서 (이 파일)
+│   └── index.ts                # 타입 정의 ✅
+├── IMAGE_FILES.md              # 이미지 파일 관리 문서
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
 ├── next.config.js
+├── postcss.config.js
+├── next-env.d.ts
 └── README.md
 ```
 
@@ -81,7 +79,8 @@ Next.js 14의 App Router를 사용한 페이지 라우팅 디렉토리입니다.
 
 **`page.tsx`**
 - 메인 홈페이지
-- 포스터 이미지 영역
+- 포스터 이미지 영역 (각 페이지에서 직접 컨테이너로 구현)
+- 헤더는 재사용 컴포넌트가 아닌 각 페이지에서 직접 관리
 
 **`globals.css`**
 - 전역 CSS 스타일
@@ -90,30 +89,31 @@ Next.js 14의 App Router를 사용한 페이지 라우팅 디렉토리입니다.
 
 #### 페이지 라우트
 
-**`/project`**
+**`/project`** ✅ (구현 완료)
 - `page.tsx`: 프로젝트 리스트 페이지
-- 카테고리 필터 (ALL, Capstone, Suhyup, Goods)
-- 프로젝트 그리드 레이아웃
+- 기본 레이아웃 구조 구현됨
+- 포스터 이미지 헤더 영역 (페이지 내 직접 구현)
+- 카테고리 필터 및 프로젝트 그리드 레이아웃 (예정)
 
-**`/project/[slug]`**
+**`/project/[slug]`** (예정)
 - `page.tsx`: 프로젝트 상세 페이지
 - 동적 라우팅으로 slug 기반 프로젝트 상세 정보 표시
 - 작품 정보, 디자이너 정보, 이미지 갤러리
 
-**`/designer`**
+**`/designer`** (예정)
 - `page.tsx`: 디자이너 리스트 페이지
 - 디자이너 그리드 레이아웃 (4열)
 
-**`/designer/[slug]`**
+**`/designer/[slug]`** (예정)
 - `page.tsx`: 디자이너 상세 페이지
 - 디자이너 프로필 정보
 - 해당 디자이너의 프로젝트 리스트
 
-**`/archive`**
+**`/archive`** (예정)
 - `page.tsx`: 아카이브 페이지
 - 과거 졸업전시 포스터 그리드 (2열)
 
-**`/artwork/[slug]`**
+**`/artwork/[slug]`** (예정)
 - `page.tsx`: 작품 상세 페이지
 - 프로젝트 상세 페이지와 유사하지만 다른 라우트로 관리 가능
 
@@ -126,14 +126,10 @@ Next.js 14의 App Router를 사용한 페이지 라우팅 디렉토리입니다.
 #### `/components/layout`
 
 **`Sidebar.tsx`** ✅ (구현 완료)
-- 좌측 고정 메뉴바 컴포넌트
+- 좌측 고정 메뉴바 컴포넌트 (웹)
 - 로고 영역, 네비게이션 메뉴, 소셜 아이콘 포함
 - 현재 활성 페이지 하이라이트 기능
-
-**`Header.tsx`** (예정)
-- 모바일용 헤더 컴포넌트
-- 햄버거 메뉴
-- 반응형 디자인용
+- 모바일에서는 상단 메뉴바로 표시
 
 **`Footer.tsx`** (예정)
 - 푸터 컴포넌트
@@ -232,15 +228,21 @@ export function cn(...inputs: any[]) {
 
 이미지 파일들을 카테고리별로 관리합니다.
 
-- `projects/`: 프로젝트 이미지 (썸네일, 헤더, 갤러리)
+- `projects/`: 프로젝트 이미지
+  - `gallery/`: 프로젝트 갤러리 이미지
+  - `thumbnails/`: 프로젝트 썸네일 이미지
 - `designers/`: 디자이너 프로필 이미지
+  - `profile-large/`: 큰 프로필 이미지
+  - `profile-small/`: 작은 프로필 이미지
 - `archive/`: 아카이브 포스터 이미지
-- `main-poster.jpg`: 메인 홈페이지 포스터
+- `headers/`: 헤더 이미지
+- `logo/`: 로고 이미지 (cnu-logo.png)
+- `main/`: 메인 이미지 (홈메인포스터.png)
 
 **이미지 네이밍 규칙:**
-- 프로젝트: `project-{slug}-{type}.jpg`
-- 디자이너: `designer-{slug}.jpg`
-- 아카이브: `archive-{year}.jpg`
+- 프로젝트: `project-{slug}-{type}.jpg` (예정)
+- 디자이너: `designer-{slug}.jpg` (예정)
+- 아카이브: `archive-{year}.jpg` (예정)
 
 ---
 
@@ -381,18 +383,26 @@ interface Archive {
 - [x] 루트 레이아웃 (`app/layout.tsx`)
 - [x] 좌측 고정 메뉴바 (`components/layout/Sidebar.tsx`)
 - [x] 메인 홈페이지 (`app/page.tsx`)
+- [x] 프로젝트 페이지 기본 구조 (`app/project/page.tsx`)
 - [x] 타입 정의 (`types/index.ts`)
 - [x] 기본 디렉토리 구조
+- [x] 이미지 디렉토리 구조
 
 ### ⏳ 진행 예정
-- [ ] 프로젝트 페이지 (`/project`)
+- [ ] 프로젝트 페이지 컨텐츠 구현 (`/project`)
 - [ ] 프로젝트 상세 페이지 (`/project/[slug]`)
 - [ ] 디자이너 페이지 (`/designer`)
 - [ ] 디자이너 상세 페이지 (`/designer/[slug]`)
 - [ ] 아카이브 페이지 (`/archive`)
-- [ ] 푸터 컴포넌트
-- [ ] 프로젝트/디자이너 카드 컴포넌트
-- [ ] 데이터 관리 시스템
+- [ ] 푸터 컴포넌트 (`components/layout/Footer.tsx`)
+- [ ] 프로젝트 카드 컴포넌트 (`components/project/ProjectCard.tsx`)
+- [ ] 프로젝트 그리드 컴포넌트 (`components/project/ProjectGrid.tsx`)
+- [ ] 디자이너 카드 컴포넌트 (`components/designer/DesignerCard.tsx`)
+- [ ] 디자이너 그리드 컴포넌트 (`components/designer/DesignerGrid.tsx`)
+- [ ] 아카이브 카드 컴포넌트 (`components/archive/ArchiveCard.tsx`)
+- [ ] UI 컴포넌트 (`components/ui/`)
+- [ ] 데이터 관리 시스템 (`lib/data/`)
+- [ ] 유틸리티 함수 (`lib/utils/cn.ts`)
 - [ ] 반응형 모바일 디자인
 
 ---
@@ -403,4 +413,7 @@ interface Archive {
 - 이미지는 Next.js Image 컴포넌트 사용 권장
 - 반응형 디자인은 Tailwind CSS 브레이크포인트 활용
 - 애니메이션은 Framer Motion 사용
+- **헤더 구조**: 
+  - 웹 버전: 각 페이지에서 포스터 이미지를 담는 헤더 컨테이너를 직접 구현 (재사용 컴포넌트 아님)
+  - 모바일 버전: 헤더 없음, 상단에 메뉴바(Sidebar)만 표시
 

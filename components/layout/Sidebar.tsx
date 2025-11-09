@@ -57,10 +57,9 @@ export default function Sidebar() {
       max-[393px]:w-full max-[393px]:h-[min(calc(116px*100vw/393px),116px)] max-[393px]:border-0 max-[393px]:z-50 max-[393px]:flex max-[393px]:flex-col max-[393px]:justify-between max-[393px]:px-0 max-[393px]:pt-0 max-[393px]:pb-[min(calc(8px*100vw/393px),8px)]
       ${isVisible ? 'max-[393px]:translate-y-0 max-[393px]:shadow-[0_4px_8px_0_rgba(0,0,0,0.15)]' : 'max-[393px]:-translate-y-full max-[393px]:shadow-none'}
       min-[394px]:h-screen min-[394px]:w-[var(--sidebar-w)] min-[394px]:border-0 min-[394px]:shadow-[0_-3px_8px_0_rgba(0,0,0,0.25)] min-[394px]:z-50 min-[394px]:flex min-[394px]:flex-col min-[394px]:justify-between min-[394px]:px-[calc(var(--sidebar-w)*0.115)] min-[394px]:py-[calc(var(--sidebar-w)*0.1425)]`}>
-      {/* 모바일: 상단 컨테이너 - 로고 + 문구 */}
       <div className="max-[393px]:flex max-[393px]:flex-row max-[393px]:items-center max-[393px]:justify-center max-[393px]:w-full max-[393px]:flex-1 min-[394px]:hidden">
+        {/* 모바일: 상단 컨테이너 - 로고 + 문구 */}
         <Link href="/" aria-label="홈으로 이동" className="max-[393px]:flex max-[393px]:items-center max-[393px]:justify-center max-[393px]:w-full cursor-pointer select-none">
-          {/* 엠블럼 로고 */}
           <Image
             src="/images/logo/cnu-logo.png"
             alt="충남대학교 로고"
@@ -69,8 +68,9 @@ export default function Sidebar() {
             className="object-contain flex-shrink-0 w-[calc(25px*100vw/393px)] h-[calc(25px*100vw/393px)]"
             priority
           />
-          {/* 텍스트 영역 */}
+          {/* 엠블럼 로고 */}
           <div className="ml-[calc(6px*100vw/393px)] flex flex-col">
+            {/* 텍스트 영역 */}
             <div className="flex flex-col">
               <h1 className="text-left font-semibold text-primary text-[min(calc(12px*100vw/393px),12px)] leading-[16px] tracking-[-4%]">
                 충남대학교 디자인창의학과 시각제품디자인전공 졸업전시
@@ -83,8 +83,8 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      {/* 모바일: 하단 컨테이너 - 네비게이션 메뉴 */}
       <div className="max-[393px]:flex max-[393px]:flex-row max-[393px]:items-center max-[393px]:justify-center max-[393px]:w-full max-[393px]:px-[min(calc(20px*100vw/393px),20px)] max-[393px]:mt-auto min-[394px]:hidden">
+        {/* 모바일: 하단 컨테이너 - 네비게이션 메뉴 */}
         <nav className="w-fit">
           <ul className="flex flex-row items-center gap-[20px]">
             {navItems.map((item) => {
@@ -106,10 +106,9 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* 웹 버전: 상단 고정 - 로고 + 문구 컨테이너 */}
       <Link href="/" aria-label="홈으로 이동" className="hidden min-[394px]:block min-[394px]:mb-[50px]">
+        {/* 웹 버전: 상단 고정 - 로고 + 문구 컨테이너 */}
         <div className="flex items-start cursor-pointer select-none">
-          {/* 엠블럼 로고 */}
           <Image
             src="/images/logo/cnu-logo.png"
             alt="충남대학교 로고"
@@ -118,8 +117,9 @@ export default function Sidebar() {
             className="object-contain flex-shrink-0 w-[min(calc(var(--sidebar-w)*0.12),48px)] h-[min(calc(var(--sidebar-w)*0.12),48px)]"
             priority
           />
-          {/* 텍스트 영역 */}
+          {/* 엠블럼 로고 */}
           <div className="ml-[calc(var(--sidebar-w)*0.035)] w-full max-w-[238px] flex flex-col">
+            {/* 텍스트 영역 */}
             <div className="flex flex-col">
               <h1 className="text-left font-semibold text-primary
                 text-[min(calc(var(--sidebar-w)*0.05),20px)] leading-[min(calc(var(--sidebar-w)*0.065),26px)] tracking-[-0.8px]">
@@ -134,10 +134,10 @@ export default function Sidebar() {
         </div>
       </Link>
 
-      {/* 웹 버전: 하단 고정 그룹 - 네비게이션 + 소셜 */}
       <div className="hidden min-[394px]:block mt-auto w-full">
-        {/* 컨테이너3: 네비게이션 메뉴 */}
+        {/* 웹 버전: 하단 고정 그룹 - 네비게이션 + 소셜 */}
         <nav className="w-full max-w-[min(calc(var(--sidebar-w)*0.5725),229px)]">
+          {/* 컨테이너3: 네비게이션 메뉴 */}
           <ul className="flex flex-col space-y-[min(calc(var(--sidebar-w)*0.1275),51px)]">
             {navItems.map((item) => {
               const active = isActive(item.href);
@@ -157,10 +157,9 @@ export default function Sidebar() {
           </ul>
         </nav>
 
-        {/* 컨테이너2: 소셜 아이콘 - 모바일에서 숨김 */}
         <div className="max-[393px]:hidden min-[394px]:mt-[min(calc(var(--sidebar-w)*0.1825),73px)] min-[394px]:w-full min-[394px]:h-[min(calc(var(--sidebar-w)*0.155),62px)]">
+          {/* 컨테이너2: 소셜 아이콘 - 모바일에서 숨김 */}
           <div className="flex items-center gap-[min(calc(var(--sidebar-w)*0.0275),11px)]">
-          {/* Instagram */}
           <a
             href="https://www.instagram.com/cnud_project/"
             target="_blank"
@@ -168,6 +167,7 @@ export default function Sidebar() {
             className="w-[min(calc(var(--sidebar-w)*0.155),62px)] h-[min(calc(var(--sidebar-w)*0.155),62px)] border border-black rounded-full flex items-center justify-center hover:bg-background-gray transition-colors"
             aria-label="Instagram"
           >
+            {/* Instagram */}
             <svg
               width="32"
               height="32"
@@ -183,7 +183,6 @@ export default function Sidebar() {
             </svg>
           </a>
 
-          {/* 충남대학교 */}
           <a
             href="https://design.cnu.ac.kr/design/community/portfolio.do"
             target="_blank"
@@ -191,6 +190,7 @@ export default function Sidebar() {
             className="w-[min(calc(var(--sidebar-w)*0.155),62px)] h-[min(calc(var(--sidebar-w)*0.155),62px)] border border-black rounded-full flex items-center justify-center hover:bg-background-gray transition-colors"
             aria-label="충남대학교 디자인창의학과"
           >
+            {/* 충남대학교 */}
             <Image
               src="/images/logo/cnu-logo.png"
               alt="충남대학교 로고"
