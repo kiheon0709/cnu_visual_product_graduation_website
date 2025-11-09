@@ -25,13 +25,12 @@ export default function RootLayout({
         <div
           className="flex min-h-screen w-screen"
           style={{
-            // 5:19 비율(= 5/24 ≈ 20.833vw)을 기본으로, 최대 400px
             // @ts-ignore - CSS var 사용
-            "--sidebar-w": "min(20.833vw, 400px)",
+            "--sidebar-w": "400px",
           }}
         >
           <Sidebar />
-          <main className="max-[393px]:w-full max-[393px]:ml-0 max-[393px]:pt-[min(calc(116px*100vw/393px),116px)] min-[394px]:ml-[var(--sidebar-w)] min-[394px]:w-[calc(100vw-var(--sidebar-w))] min-h-screen">
+          <main className="max-[743px]:w-full max-[743px]:ml-0 max-[743px]:pt-[min(calc(116px*100vw/393px),116px)] min-[744px]:ml-[var(--sidebar-w)] min-[744px]:w-[calc(100vw-var(--sidebar-w))] min-h-screen">
             {children}
           </main>
         </div>
