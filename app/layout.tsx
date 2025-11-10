@@ -22,13 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className={poppins.variable}>
       <body>
-        <div
-          className="flex min-h-screen w-screen"
-          style={{
-            // @ts-ignore - CSS var 사용
-            "--sidebar-w": "400px",
-          }}
-        >
+        <div className="flex min-h-screen w-screen">
           <Sidebar />
           <main className="max-[743px]:w-full max-[743px]:ml-0 max-[743px]:pt-[min(calc(116px*100vw/393px),116px)] min-[744px]:ml-[var(--sidebar-w)] min-[744px]:w-[calc(100vw-var(--sidebar-w))] min-h-screen">
             {children}

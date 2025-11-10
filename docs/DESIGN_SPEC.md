@@ -419,62 +419,66 @@
 
 ---
 
-## 푸터 (Frame 86)
+## 푸터 (Footer Section)
 
-### 전체 구조
-- 너비: **1521px**
-- 높이: **187px**
-- 배경색: **#d9d9d9**
-- 패딩: **40px** (좌우)
+### 공통 구성
+- 콘텐츠 프레임 배경: `#d9d9d9`
+- 기본 구조: 좌측 충남대학교 로고/텍스트 + 저작권, 연락처 정보. 모든 텍스트는 Poppins, 자간 **-4%**를 기본으로 사용.
+- 로고/텍스트 묶음(`Frame 79`): 가로 Auto Layout(Hug×Hug), 아이콘과 텍스트 간 간격 **12px**, 세로 정렬 `Center`. 로고 충남대학교 로고(이미지로 저장되어있음)
+- 저작권 문구: 브랜드 블록 내부에서 로고/텍스트 묶음 바로 아래에 위치.
+- 연락처 정보: TEL, EMAIL, 주소 3줄 구성. PC에서는 우측 정렬과 회색(`#939393`), Tablet은 좌측 정렬과 회색(`#939393`), Mobile은 좌측 정렬과 검정(`#000000`).
+- Auto Layout 방향: PC는 가로(`space-between`), Tablet은 세로(`Top/Left`), Mobile은 단일 브랜드 블록 안에서 세로 정렬. 모든 프레임은 Hug/Fill 조합으로 내부 콘텐츠에 맞춰 크기가 결정된다.
 
-### 푸터 콘텐츠 (Frame 80)
-- 너비: **1441px**
-- 높이: **100px**
+### PC (Frame 149, ≥1025px)
+- 바깥 프레임: **1520×187px** 고정.
+- 콘텐츠 래퍼(`Frame 80`)
+  - 배치: 프레임 중앙 정렬 → 좌·우 여백 **40px**, 상·하 여백 **31px**.
+  - Auto Layout: Horizontal, Primary axis `Space Between`, Counter axis `Center`.
+  - 크기: 가로 Fill(결과 1440px), 세로 Hug(결과 100px).
+- 브랜드 블록(`Frame 85`)
+  - Width/Height: Hug contents(333×100px).
+  - Layout mode: Vertical, Gap **28px**, Primary/Counter axis alignment `Start`.
+  - 상단 로고/텍스트(`Frame 79`): Width/Height Hug(291×48px), Layout mode Horizontal, Item spacing **12px**, Counter axis alignment `Center`.
+    - 엠블럼: **48×48px** 이미지.
+    - 2줄 영문 텍스트: SemiBold 16pt, line-height Auto, letter-spacing -4%, 좌측 정렬.
+  - 저작권 문구: Regular 16pt, line-height Auto, letter-spacing -4%, Auto Layout 상 Gap 28px, 텍스트 `2025 CNUD Graduation All rights reserved Ⓒ`.
+- 연락처 텍스트
+  - Width/Height: Hug contents(318×96px), Auto Layout align `Center`(세로 중앙)로 배치.
+  - 텍스트 정렬: Right, 폰트 Regular 16pt, line-height 32px, letter-spacing -4%, 색상 `#939393`.
 
-#### 좌측 영역 (Frame 85)
-- 너비: **333px**
+### Tablet (Frame 254, 744–1024px)
+- 바깥 프레임: **588×233px** 고정.
+- 콘텐츠 래퍼(`Frame 80`)
+  - 배치: 프레임 상단에 붙음 → 좌·우 여백 **36px**, 상·하 여백 **28px**.
+  - Auto Layout: Vertical, Primary/Counter axis `Top/Left`, Item spacing **20px**.
+  - 크기: 가로 Fill(516px), 세로 Hug(177px).
+- 브랜드 블록(`Frame 85`)
+  - Width/Height: Hug contents(333×79px).
+  - Layout mode: Vertical, Gap **16px**(로고 묶음-저작권 간), Alignment: Start.
+  - 로고/텍스트 묶음(`Frame 79`): Width/Height Hug(252×42px), Layout mode Horizontal, Item spacing **12px**, Counter axis alignment `Center`.
+    - 엠블럼: **38×38px**.
+    - 2줄 텍스트: SemiBold 14pt, line-height Auto, letter-spacing -4%.
+  - 저작권: Medium 14pt, line-height Auto, letter-spacing -4%, 색상 `#000000`.
+- 연락처 텍스트: Width Hug(238px), Height Hug(78px), Regular 14pt, line-height 26px, letter-spacing -4%, 좌측 정렬, 색상 `#939393`.
 
-- 로고 및 텍스트 (Frame 79)
-  - 높이: **48px**
-  - 로고: **48px × 48px**
-  - 텍스트 좌측 간격: **40px**
-  - 텍스트 너비: **231px**
+### Mobile (Frame 201, 320–743px)
+- 바깥 프레임: **393×188px** 고정.
+- 콘텐츠 래퍼(`Frame 80`)
+  - 배치: 프레임 상단에 붙음 → 좌·우 여백 **20px**, 상·하 여백 **31px**.
+  - Auto Layout: Vertical, Primary/Counter axis `Top/Left`, Item spacing 0(단일 자식).
+  - 크기: 가로 Fill(353px), 세로 Hug(126px).
+- 브랜드 블록(`Frame 85`)
+  - Width/Height: Hug contents(353×126px) – 로고 묶음, 저작권, 연락처를 모두 포함.
+  - Auto Layout: Vertical, Gap **12px**, 정렬 `Top/Left`.
+  - 상단 로고/텍스트(`Frame 79`): Hug×Hug(217×36px), Layout mode Horizontal, Item spacing **12px**, Counter axis alignment `Center`.
+    - 엠블럼: **32×32px**.
+    - 텍스트: SemiBold 12pt, line-height Auto, letter-spacing -4%.
+  - 저작권: Regular 12pt, line-height Auto, letter-spacing -4%.
+- 연락처 텍스트: Hug×Hug(199×48px), Regular 10pt, line-height 16, letter-spacing -4%, 좌측 정렬, 색상 `#000000`.
 
-  - 텍스트: "chungnam national unversity college of fine arts & music"
-    - 폰트: Poppins SemiBold (600)
-    - 크기: **16px**
-    - 줄간격: **24px**
-    - 자간: **-0.64px**
-
-- 저작권 텍스트
-  - 위치: 로고 영역 아래
-  - 상단 간격: **76px**
-  - 폰트: Poppins Regular (400)
-  - 크기: **16px**
-  - 줄간격: **24px**
-  - 자간: **-0.64px**
-  - 색상: **#000000**
-  - 텍스트: "2025 CNUD Graduation All rights reserved Ⓒ"
-
-#### 우측 영역
-- 위치: 좌측 영역 오른쪽
-- 좌측 간격: **1103px**
-- 너비: **278px**
-- 텍스트 정렬: 오른쪽 정렬
-
-**연락처 정보 텍스트:**
-- 폰트: Poppins Regular (400)
-- 크기: **14px**
-- 줄간격: **26px**
-- 자간: **-0.56px**
-- 색상: **#000000**
-- 내용: "TEL : 042-821-6981\nEMAIL : shr712@cnu.ac.kr\n(34134) 대전광역시 유성구 대학로 99 충남대학교"
-
-#### 상단으로 이동 버튼 (Frame 84)
-- 위치: 푸터 상단 우측
-- 크기: **60px × 60px**
-- 배경색: **#c9c9c9**
-- 보더 라디우스: **100px** (원형)
+### 구현 참고
+- 모든 텍스트 내용은 PC/Tablet/Mobile 동일하며, 폰트 크기와 줄간, 색상만 변경된다.
+- 디자인 파일에는 추가 UI 요소(예: 상단 이동 버튼)가 존재하지 않으므로, 개발 시 푸터는 위 요소로만 구성한다.
 
 ---
 

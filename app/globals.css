@@ -4,6 +4,7 @@
 
 :root {
   --font-poppins: 'Poppins', sans-serif;
+  --sidebar-w: 400px;
 }
 
 * {
