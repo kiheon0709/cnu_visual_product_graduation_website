@@ -255,7 +255,6 @@ export default function Sidebar() {
               paddingRight: metrics.paddingX,
               paddingTop: metrics.paddingY,
               paddingBottom: metrics.paddingY,
-              rowGap: metrics.contentGap,
             }
       }
     >
@@ -360,7 +359,13 @@ export default function Sidebar() {
         </div>
       </Link>
 
-      <div className="hidden min-[744px]:flex min-[744px]:flex-col min-[744px]:justify-end min-[744px]:w-full min-[744px]:flex-1">
+      <div
+        className="hidden min-[744px]:block flex-1"
+        aria-hidden
+        style={{ minHeight: 50 }}
+      />
+
+      <div className="hidden min-[744px]:flex min-[744px]:flex-col min-[744px]:justify-end min-[744px]:w-full">
         {/* 웹 버전: 하단 고정 그룹 - 네비게이션 + 소셜 */}
         <nav className="w-full">
           {/* 컨테이너3: 네비게이션 메뉴 */}
