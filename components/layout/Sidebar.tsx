@@ -44,6 +44,7 @@ interface ComputedMetrics {
 }
 
 const TABLET_DETAIL_PREFIXES = ["/project", "/designer", "/archive"];
+const TABLET_FROZEN_VIEWPORT = 1025;
 
 const BASE_METRICS: Record<Breakpoint, MetricsConfig> = {
   pc: {
@@ -136,8 +137,13 @@ const getBreakpoint = (width: number, pathname: string): Breakpoint => {
 
 const computeMetrics = (width: number, pathname: string): ComputedMetrics => {
   const breakpoint = getBreakpoint(width, pathname);
-  const config = BASE_METRICS[breakpoint];
-  const scale = width / config.baseViewport;
+  const usePcFrozenMetrics =
+    breakpoint === "tablet-home" || breakpoint === "tablet-detail";
+
+  const config = usePcFrozenMetrics ? BASE_METRICS.pc : BASE_METRICS[breakpoint];
+  const scale = usePcFrozenMetrics
+    ? TABLET_FROZEN_VIEWPORT / BASE_METRICS.pc.baseViewport
+    : width / config.baseViewport;
   const scaleValue = (value: number) => Number((value * scale).toFixed(3));
 
   return {
