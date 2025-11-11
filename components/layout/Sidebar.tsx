@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type Breakpoint = "mobile" | "tablet-home" | "tablet-detail" | "pc";
 
@@ -163,11 +163,19 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
-  const initialWidth =
-    typeof window !== "undefined" ? window.innerWidth : BASE_METRICS.pc.baseViewport;
-  const [metrics, setMetrics] = useState<ComputedMetrics>(() =>
-    computeMetrics(initialWidth, pathname)
-  );
+  const [metrics, setMetrics] = useState<ComputedMetrics | null>(null);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleResize = () => {
+      setMetrics(computeMetrics(window.innerWidth, pathname));
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [pathname]);
 
   const navItems = [
     { name: "Project", href: "/project" },
@@ -181,27 +189,6 @@ export default function Sidebar() {
     }
     return pathname === href;
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setMetrics(computeMetrics(width, pathname));
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [pathname]);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--sidebar-w",
-      `${metrics.breakpoint === "mobile" ? 0 : metrics.sidebarWidth}px`
-    );
-  }, [metrics.breakpoint, metrics.sidebarWidth]);
-
-  const isMobile = metrics.breakpoint === "mobile";
-  const formattedValue = (value: number) => `${value}px`;
 
   // 모바일 스크롤 감지
   useEffect(() => {
@@ -231,6 +218,28 @@ export default function Sidebar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!metrics) return;
+
+    document.documentElement.style.setProperty(
+      "--sidebar-w",
+      `${metrics.breakpoint === "mobile" ? 0 : metrics.sidebarWidth}px`
+    );
+  }, [metrics]);
+
+  if (!metrics) {
+    return (
+      <aside
+        className="fixed left-0 top-0 bg-white"
+        aria-hidden
+        style={{ visibility: "hidden" }}
+      />
+    );
+  }
+
+  const isMobile = metrics.breakpoint === "mobile";
+  const formattedValue = (value: number) => `${value}px`;
 
   return (
     <aside className={`fixed left-0 top-0 bg-white transition-transform duration-300 ease-in-out
