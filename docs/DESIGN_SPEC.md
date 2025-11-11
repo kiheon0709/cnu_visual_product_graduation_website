@@ -36,7 +36,7 @@
 - 상단 로고: 48px × 48px
 - 로고와 텍스트 간 간격: 14px
 - 상단 문구: Poppins SemiBold, 20px, 행간 26px, 자간 -4
-- 하단 메뉴 텍스트: Poppins Regular/SemiBold, 54px, 행간 40px, 자간 -4
+- 하단 메뉴 텍스트: Poppins Regular/SemiBold, 64px, 행간 40px, 자간 -4
 - 메뉴 항목 간 간격: 51px
 - 메뉴 컨테이너와 소셜 컨테이너 간 간격: 73px
 - 소셜 아이콘 크기: 62px × 62px, 아이콘 간 간격 11px
@@ -512,7 +512,7 @@
 - 24px: 프로젝트명, 디자이너명, 포스터 제목
 - 40px: 페이지 타이틀 (Designer), 필터 항목 (활성)
 - 48px: 프로젝트 이미지 영역 안내 텍스트
-- 54px: 네비게이션 메뉴 (Project, Designer, Archive)
+- 64px: 네비게이션 메뉴 (Project, Designer, Archive)
 
 ### Poppins Bold (700)
 - 24px: 프로젝트명 (작품 상세 페이지)

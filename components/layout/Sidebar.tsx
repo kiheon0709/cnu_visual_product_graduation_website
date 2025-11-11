@@ -55,7 +55,7 @@ const BASE_METRICS: Record<Breakpoint, MetricsConfig> = {
     logoTextGap: 14,
     titleFont: 20,
     titleLineHeight: 26,
-    menuFont: 54,
+    menuFont: 64,
     menuLineHeight: 40,
     menuGap: 51,
     menuSocialGap: 73,
