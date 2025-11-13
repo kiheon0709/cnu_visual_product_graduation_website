@@ -280,7 +280,7 @@ export default function Sidebar() {
             {/* 텍스트 영역 */}
             <div className="flex flex-col">
               <h1 className="text-left font-semibold text-primary text-[min(calc(12px*100vw/393px),12px)] leading-[16px] tracking-[-4%]">
-                충남대학교 디자인창의학과<br />시각제품디자인 졸업전시
+                충남대학교 디자인창의학과 시각제품디자인 졸업전시
               </h1>
             </div>
           </div>
