@@ -47,8 +47,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           "w-full h-fit flex flex-col",
           "gap-[42px]",
           "px-[20px] pt-[43px] pb-[120px]",
-          "min-[744px]:pt-[57px] min-[744px]:pb-[80px] min-[744px]:px-[22px] min-[744px]:gap-[72px]",
-          "min-[1025px]:pt-[125px] min-[1025px]:pb-[63px] min-[1025px]:px-[22px] min-[1025px]:gap-[100px]",
+          "min-[744px]:pt-[57px] min-[744px]:pb-[80px] min-[744px]:px-[0px] min-[744px]:gap-[72px]",
+          "min-[1025px]:pt-[125px] min-[1025px]:pb-[63px] min-[1025px]:px-[0px] min-[1025px]:gap-[100px]",
         ].join(" ")}
       >
         {/* 작품 정보 영역 */}
@@ -57,8 +57,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           className={[
             "w-full h-fit flex flex-col-reverse",
             "gap-[23px]",
-            "min-[744px]:flex-col min-[744px]:gap-[24px]",
-            "min-[1025px]:flex-row min-[1025px]:items-stretch min-[1025px]:gap-[48px]",
+            "min-[744px]:flex-col min-[744px]:px-[22px] min-[744px]:gap-[24px]",
+            "min-[1540px]:flex-row min-[1540px]:items-stretch min-[1540px]:px-[22px] min-[1540px]:gap-[48px]",
           ].join(" ")}
         >
           {/*작품 정보 좌측*/}
@@ -67,7 +67,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               "w-full h-fit flex flex-col",
               "gap-[12px]",
               "min-[744px]:gap-[16px]",
-              "min-[1025px]:flex-1 min-[1025px]:min-w-0 min-[1025px]:gap-[36px]",
+              "min-[1540px]:flex-1 min-[1540px]:min-w-0 min-[1540px]:gap-[36px]",
             ].join(" ")}
           >
             {/* 작품 제목 */}
@@ -88,6 +88,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 "text-[12px]",
                 "min-[744px]:text-[16px]",
                 "min-[1025px]:text-[20px]",
+                // 1539px 이하 구간에서 설명 텍스트 박스 고정 너비(1540 시점 기준 폭에 준하는 값)
+                "max-[1539px]:w-[960px] max-[1539px]:max-w-full",
               ].join(" ")}
             >
               {project.description}
@@ -116,7 +118,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             className={[
               "hidden",
               "min-[744px]:block min-[744px]:w-full min-[744px]:h-[3px] min-[744px]:bg-[#d9d9d9] min-[744px]:rounded-[4px]",
-              "min-[1025px]:block min-[1025px]:w-[3px] min-[1025px]:h-auto min-[1025px]:bg-[#d9d9d9] min-[1025px]:rounded-[4px] min-[1025px]:self-stretch min-[1025px]:flex-shrink-0",
+              "min-[1540px]:block min-[1540px]:w-[3px] min-[1540px]:h-auto min-[1540px]:bg-[#d9d9d9] min-[1540px]:rounded-[4px] min-[1540px]:self-stretch min-[1540px]:flex-shrink-0",
             ].join(" ")}
           />
           {/*작품 정보 우측*/}
@@ -125,7 +127,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               "w-full h-fit flex flex-row",
               "gap-[16px]",
               "min-[744px]:gap-[20px]",
-              "min-[1025px]:w-fit min-[1025px]:flex-shrink-0 min-[1025px]:gap-[24px]",
+              "min-[1540px]:w-fit min-[1540px]:flex-shrink-0 min-[1540px]:gap-[24px]",
             ].join(" ")}
           >
             {/* 디자이너 프로필 이미지*/}
@@ -189,31 +191,33 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 "min-[1025px]:gap-[8px]",
                 ].join(" ")}>
                 {/* 디자이너 이메일 정보 영역*/}
-                <div className={[
-                  "w-fit h-fit flex flex-row",
-                  "gap-[8px]",
-                  "min-[744px]:gap-[14px]",
-                  "min-[1025px]:gap-[16px]",
-                ].join(" ")}>
-                  <Image 
-                    src="/images/logo/Email.svg" 
-                    alt="email" 
-                    width={24} 
-                    height={24}
-                    className={[
-                      "w-[16px] h-[12px]",
-                      "min-[744px]:w-[18px] min-[744px]:h-[18px]",
-                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
-                    ].join(" ")}
-                  />
-                  <p className="text-[#858585] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px]">
-                    {designer.contact.email}
-                  </p>
-                </div>
+                {designer.contact.email && (
+                  <div className={[
+                    "w-fit h-fit flex flex-row items-center",
+                    "gap-[8px]",
+                    "min-[744px]:gap-[14px]",
+                    "min-[1025px]:gap-[16px]",
+                  ].join(" ")}>
+                    <Image 
+                      src="/images/logo/Email.svg" 
+                      alt="email" 
+                      width={24} 
+                      height={24}
+                      className={[
+                        "w-[16px] h-[12px]",
+                        "min-[744px]:w-[18px] min-[744px]:h-[18px]",
+                        "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                      ].join(" ")}
+                    />
+                    <p className="text-[#858585] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px]">
+                      {designer.contact.email}
+                    </p>
+                  </div>
+                )}
                 {/* 디자이너 비핸스 정보 영역*/}
                 {designer.contact.behance && (
                   <div className={[
-                    "w-fit h-fit flex flex-row",
+                    "w-fit h-fit flex flex-row items-center",
                     "max-w-full",
                     "gap-[8px]",
                     "min-[744px]:gap-[14px]",
@@ -239,14 +243,13 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 {designer.contact.instagram && (
                   <div
                     className={[
-                      "w-fit h-fit flex flex-row",
+                      "w-fit h-fit flex flex-row items-center",
                       "max-w-full",
                       "gap-[8px]",
-                      "min-[744px]:hidden",
                     ].join(" ")}
                   >
                     <Image 
-                      src="/images/instagram.svg" 
+                      src="/images/logo/Instagram.svg" 
                       alt="instagram" 
                       width={24} 
                       height={24}
@@ -270,13 +273,16 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           id="작품 사진 영역"
           className={[
             "w-full flex flex-col",
-            "gap-[16px]",
-            "min-[744px]:w-[calc((100vw-257.5px)*906/576.5)]",
-            "min-[744px]:gap-[58px]",
-            "min-[1025px]:w-[calc((100vw-var(--sidebar-w)-44px)*906/1476)]",
-            "min-[1025px]:gap-[58px]",
           ].join(" ")}
         >
+          <Image 
+              src="/images/projects/gallery/작품설명사진.png"
+              alt={project.title} 
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-auto"
+            />
         </div>
       </section>
     </div>

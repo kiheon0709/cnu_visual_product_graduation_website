@@ -103,7 +103,7 @@ export default function ProjectCard({
             "font-normal text-black tracking-[-4%]",
             "text-[12px]",
             "min-[744px]:text-[16px]",
-            "min-[1025px]:text-[16px]",
+            "min-[1025px]:text-[20px]",
           ].join(" ")}
         >
           {designerName}

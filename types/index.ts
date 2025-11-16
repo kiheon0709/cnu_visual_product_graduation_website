@@ -23,9 +23,9 @@ export interface Designer {
   profileImage: string;
   introduction: string;
   contact: {
-    email: string;
-    behance?: string;
-    instagram?: string;
+    email: string | null;
+    behance: string | null;
+    instagram: string | null;
   };
   projectIds: string[];
 }

@@ -26,7 +26,7 @@ export const designers: Designer[] = [
     introduction: "소개글 소개글 소개글 소개글 소개글",
     contact: {
       email: "designer2@test.com",
-      behance: "https://www.behance.net/designer2",
+      behance: null,
       instagram: "@designer2",
     },
     projectIds: ["project-2"],
@@ -42,7 +42,7 @@ export const designers: Designer[] = [
     contact: {
       email: "designer3@test.com",
       behance: "https://www.behance.net/designer3",
-      instagram: "@designer3",
+      instagram: null,
     },
     projectIds: ["project-3"],
   },
@@ -56,7 +56,7 @@ export const designers: Designer[] = [
     introduction: "소개글 소개글 소개글 소개글 소개글",
     contact: {
       email: "designer4@test.com",
-      behance: "https://www.behance.net/designer4",
+      behance: null,
       instagram: "@designer4",
     },
     projectIds: [],
@@ -70,9 +70,9 @@ export const designers: Designer[] = [
     profileImage: "/images/designers/profile/이건홍.jpg",
     introduction: "소개글 소개글 소개글 소개글 소개글",
     contact: {
-      email: "designer5@test.com",
-      behance: "https://www.behance.net/designer5",
-      instagram: "@designer5",
+      email: null,
+      behance: null,
+      instagram: null,
     },
     projectIds: [],
   },
@@ -86,8 +86,8 @@ export const designers: Designer[] = [
     introduction: "소개글 소개글 소개글 소개글 소개글",
     contact: {
       email: "designer6@test.com",
-      behance: "https://www.behance.net/designer6",
-      instagram: "@designer6",
+      behance: null,
+      instagram: null,
     },
     projectIds: [],
   },
@@ -100,9 +100,9 @@ export const designers: Designer[] = [
     profileImage: "/images/designers/profile/허태선.jpg",
     introduction: "소개글 소개글 소개글 소개글 소개글",
     contact: {
-      email: "designer7@test.com",
+      email: null,
       behance: "https://www.behance.net/designer7",
-      instagram: "@designer7",
+      instagram: null,
     },
     projectIds: [],
   },

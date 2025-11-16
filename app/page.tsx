@@ -1,17 +1,16 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="relative w-full h-full min-h-screen bg-background-gray overflow-hidden">
-      <div className="relative w-full h-full min-h-screen">
-        {/* 메인 포스터 이미지 영역 - 화면을 꽉 채우고 필요시 화면 밖까지 확장 */}
-        <Image
-          src="/images/main/홈메인포스터.png"
-          alt="졸업전시 메인 포스터"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
+    <div className="relative w-full min-h-screen bg-background-gray">
+      <div className="w-full">
+        {/* 메인 포스터 비디오 영역 - 세로 스크롤 가능, 잘림 없이 표시 */}
+        <video
+          src="/images/main/메인무빙포스터.mp4"
+          className="w-full h-auto object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/main/홈메인포스터.png"
         />
       </div>
     </div>
