@@ -1,6 +1,9 @@
 "use client";
 
+import Link from "next/link";
+
 interface ProjectCardProps {
+  slug?: string;
   title?: string;
   category?: string;
   designerName?: string;
@@ -10,6 +13,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({
+  slug,
   title = "프로젝트명",
   category = "PRODUCT",
   designerName = "홍길동",
@@ -17,7 +21,7 @@ export default function ProjectCard({
   description,
   keywords,
 }: ProjectCardProps) {
-  return (
+  const cardContent = (
     <div
       className={[
         "flex flex-col",
@@ -107,5 +111,15 @@ export default function ProjectCard({
       </div>
     </div>
   );
+
+  if (slug) {
+    return (
+      <Link href={`/project/${slug}`} className="block w-full h-fit">
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return cardContent;
 }
 

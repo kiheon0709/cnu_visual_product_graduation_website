@@ -44,14 +44,18 @@
 
 ### Tablet 구간 (744~1024px, PC 1025px 고정 미러링)
 - 적용 기준: PC 구간(1920px 기준) 값을 1025px 뷰포트에 스케일링한 상태를 그대로 유지
-- 메뉴바 너비: 약 213.5px
-- 상단 로고: 약 25.6px × 25.6px
-- 로고와 텍스트 간 간격: 약 7.5px
-- 상단 문구: Poppins SemiBold, 약 10.7px, 행간 약 13.9px, 자간 -4
-- 하단 메뉴 텍스트: Regular/SemiBold, 약 34.2px, 행간 약 21.4px, 자간 -4
-- 메뉴 항목 간 간격: 약 27.2px
-- 메뉴 컨테이너와 소셜 컨테이너 간 간격: 약 39.0px
-- 소셜 아이콘 크기: 약 33.1px × 33.1px, 아이콘 간 간격 약 5.9px
+- 스케일 비율: 1025 / 1920 = 0.5339 (소수점 3자리 반올림)
+- 메뉴바 너비: **213.542px** (400 × 0.5339)
+- 좌우 패딩: **24.559px** (46 × 0.5339)
+- 상하 패딩: **30.432px** (57 × 0.5339)
+- 상단 로고: **25.627px × 25.627px** (48 × 0.5339)
+- 로고와 텍스트 간 간격: **7.475px** (14 × 0.5339)
+- 상단 문구: Poppins SemiBold, **10.678px**, 행간 **13.881px**, 자간 -4
+- 하단 메뉴 텍스트: Regular/SemiBold, **34.170px**, 행간 **21.356px**, 자간 -4
+- 메뉴 항목 간 간격: **27.229px** (51 × 0.5339)
+- 메뉴 컨테이너와 소셜 컨테이너 간 간격: **38.975px** (73 × 0.5339)
+- 소셜 아이콘 크기: **33.102px × 33.102px** (62 × 0.5339), 아이콘 간 간격 **5.873px** (11 × 0.5339)
+- 콘텐츠 간격: **262.145px** (491 × 0.5339, 최소 50px 보장)
 - 홈/세부 페이지 구분 없이 동일 값 적용
 
 ### Mobile 기준 (393×1042)
@@ -85,27 +89,30 @@
 - 푸터 구조/스타일은 `## 푸터` 섹션과 동일하되 뷰포트에 맞춰 리사이징.
 
 ### PC (기준 폭 1520px, 1025px 이상)
-- 전체 레이아웃 폭: 1520px, 내부 콘텐츠 폭 1478px.
-- 상단 히어로 이미지 `1520×337px`, 좌우 여백 없음.
+- 전체 레이아웃: 뷰포트 너비에서 사이드바(`var(--sidebar-w)`)를 제외한 영역 사용
+- 상단 히어로 이미지: 높이 `337px`, 모바일에서 숨김 처리
+- 본문 영역 패딩: 좌우 `22px`, 상단 `52px`, 하단 `264px`
 - 카테고리 필터
-  - 위치: 히어로 이미지 하단 389px 지점.
-  - 크기: `513×60px`, 좌측 정렬.
+  - 위치: 히어로 이미지 하단 또는 페이지 상단(모바일)
+  - 정렬: 모바일 중앙, 태블릿/PC 좌측
   - 텍스트 스타일  
-    - `ALL`: Bold 40px, line-height 60px, letter-spacing -1.6px, 색상 `#000000`.  
-    - 나머지: Medium 30px, line-height 45px, letter-spacing -1.2px, 색상 `#C2C2C2`.  
-    - 항목 간 좌측 기준 간격: `ALL`→`Capstone` 93px, `Capstone`→`Suhyup` 168px, `Suhyup`→`Goods` 137px.
+    - `ALL`: Bold 40px (PC), 32px (태블릿), 20px (모바일), line-height 60px/48px/30px, letter-spacing -4%, 색상 `#000000` (활성)  
+    - 나머지: Medium 30px (PC), 24px (태블릿), 16px (모바일), line-height 45px/36px/24px, letter-spacing -4%, 색상 `#C2C2C2` (비활성)
+  - 항목 간 간격: `28px` (태블릿/PC), `16px` (모바일)
 - 프로젝트 카드 그리드
-  - 위치: 필터 하단 72px.
-  - 2열(733px) × 5행, 가로 간격 12px, 세로 간격 82px. 총 카드 10개.
-  - 카드 크기: `733×486px`.
+  - 레이아웃: 모바일 1열, 태블릿/PC 2열
+  - 카드 간 간격: 세로 `44px` (PC), `18px` (태블릿), `24px` (모바일)
+  - 카드 크기 계산:
+    - **PC**: `w-[calc((100vw-var(--sidebar-w)-44px)*733/1476)]`, 썸네일 높이 `calc((100vw-var(--sidebar-w)-44px)*412/1476)`
+    - **태블릿**: `w-[calc((100vw-257.5px)*278.52/576.5)]`, 높이 `calc((100vw-257.5px)*155.29/576.5)`
+    - **모바일**: `w-[calc(100vw-40px)]`, aspect-ratio `353/158`
 - 카드 내부
-  - 썸네일 영역: `733×412px`, 내부 패딩 60px.
-  - 이미지 프레임: 기본 `613×156px`. 첫 행 우측 카드만 소개문/키워드 노출(프레임 폭 633px) 예시 제공.
-  - 키워드 영역: `459×39px`, 텍스트 Medium 26px, line-height 39px, letter-spacing -1.04px, 색상 `#6A6A6A`. 키워드 간 간격 165px.
-  - 프로젝트명 블록(Frame 65): `733×66px`.  
-    - 프로젝트명: SemiBold 24px, line-height 36px, letter-spacing -0.96px.  
-    - 카테고리: Regular 20px, line-height 30px, letter-spacing -0.8px, 프로젝트명 우측 여백 14px.  
-    - 참여자명: Regular 20px, line-height 30px, letter-spacing -0.8px, 프로젝트명 하단에서 36px 떨어짐.
+  - 썸네일 영역: 배경색 `#D9D9D9`, 반응형 크기 (위 카드 크기 계산 참조)
+  - 카드 내부 요소 간 간격: `8px` (PC), `12px` (태블릿), `8px` (모바일)
+  - 프로젝트명 블록
+    - 프로젝트명: SemiBold 24px (PC), 20px (태블릿), 16px (모바일), line-height 36px/30px/24px, letter-spacing -4%, 색상 `#000000`
+    - 카테고리: Regular 20px (PC), 16px (태블릿), 14px (모바일), line-height 30px/24px/21px, letter-spacing -4%, 색상 `#A8A8A8`, 프로젝트명 우측 여백 `8px`
+    - 참여자명: Regular 16px (PC/태블릿), 12px (모바일), line-height 24px/18px, letter-spacing -4%, 색상 `#000000`
 - 호버 상태(PC)
   - 썸네일 영역 위에 Medium 26px `#858585` 설명 텍스트가 노출되는 카드 변형 사용.
   - 동일 영역 안에서 키워드 3개 표시.
@@ -113,42 +120,44 @@
 - 우측 하단 플로팅 버튼: 원형 `60×60px`, 배경 `#C9C9C9`, 페이지 우측 끝에서 약 40px/아래에서 120px 위치.
 
 ### Tablet (기준 폭 586px, 744–1024px)
-- 전체 프레임 폭 586px, 내부 콘텐츠 폭 542px. 히어로 이미지 `586×260px`.
+- 전체 레이아웃: 뷰포트 너비에서 사이드바(213.542px 고정)를 제외한 영역 사용
+- 상단 히어로 이미지: 높이 `260px`
+- 본문 영역 패딩: 좌우 `22px`, 상단 `57px`, 하단 `80px`
 - 카테고리 필터
-  - 위치: 이미지 하단 57px.
-  - 크기: `530×56px`.
+  - 위치: 히어로 이미지 하단 또는 페이지 상단
+  - 정렬: 좌측 정렬
   - 텍스트 스타일  
-    - `ALL`: Bold 32px, line-height 48px, letter-spacing -1.28px.  
-    - 나머지: Medium 24px, line-height 36px, letter-spacing -0.96px, 색상 `#C2C2C2`.
-  - 항목 간 간격: `ALL`→`Capstone` 80px, `Capstone`→`Suhyup` 140px, `Suhyup`→`Goods` 115px.
+    - `ALL`: Bold 32px, line-height 48px, letter-spacing -4%, 색상 `#000000` (활성)
+    - 나머지: Medium 24px, line-height 36px, letter-spacing -4%, 색상 `#C2C2C2` (비활성)
+  - 항목 간 간격: `28px`
 - 프로젝트 카드 그리드
-  - 위치: 필터 하단 72px.
-  - 2열 × 4행, 카드 사이 가로 간격 약 18px, 세로 간격 28px.
-  - 카드 크기: `262×212px`.
+  - 레이아웃: 2열, `justify-between` 배치
+  - 카드 간 간격: 세로 `18px`
+  - 카드 크기: 반응형 계산 (위 PC 섹션 참조)
 - 카드 내부
-  - 썸네일 영역: `262×146px`.
-  - 프로젝트 정보(Frame 65): `262×54px`.  
-    - 프로젝트명: SemiBold 20px, line-height 30px, letter-spacing -0.8px.  
-    - 카테고리: Regular 16px, line-height 24px, letter-spacing -0.64px, 색상 `#A8A8A8`.  
-    - 참여자명: Regular 16px, line-height 24px, letter-spacing -0.64px, 상단과 간격 30px.
+  - 썸네일 영역: 반응형 크기 (위 카드 크기 계산 참조)
+  - 프로젝트 정보: 위 PC 섹션 참조
 - 푸터: `586×233px`, 내부 래퍼 `514×177px`(Vertical Auto Layout). 저작권 Medium 14px Black, 연락처 Regular 14px `#7E7E7E`.
 
 ### Mobile (기준 폭 393px, 320–743px)
-- 상단 고정 헤더 컴포넌트(높이 116px) 포함.
-- 히어로 이미지 없음. 탭과 리스트가 바로 시작.
+- 상단 고정 헤더 컴포넌트(높이 116px) 포함, 메인 콘텐츠는 헤더 하단부터 시작
+- 히어로 이미지: 숨김 처리 (`hidden min-[744px]:block`)
+- 본문 영역 패딩: 좌우 `20px`, 상단 `23px`, 하단 `120px`
 - 카테고리 필터
-  - 위치: 헤더 아래 39px.
-  - 폭 264px, 중앙 정렬.
+  - 위치: 페이지 상단
+  - 정렬: 중앙 정렬
   - 텍스트 스타일  
-    - `ALL`: Bold 20px, line-height 30px, letter-spacing -0.8px, 블랙.  
-    - 나머지: Medium 16px, line-height 24px, letter-spacing -0.64px, `#C2C2C2`.  
-    - 항목 간 간격: `ALL`→`Capstone` 51px, `Capstone`→`Suhyup` 54px, `Suhyup`→`Goods` 50px.
+    - `ALL`: Bold 20px, line-height 30px, letter-spacing -4%, 색상 `#000000` (활성)
+    - 나머지: Medium 16px, line-height 24px, letter-spacing -4%, 색상 `#C2C2C2` (비활성)
+  - 항목 간 간격: `16px`
 - 프로젝트 카드 리스트
-  - 1열, 카드 폭 353px, 높이 208px, 카드 사이 간격 24px.
-  - 썸네일: `353×158px`.
-  - 프로젝트명: SemiBold 16px, line-height 24px.
-  - 카테고리: Regular 14px, line-height 21px, `#A8A8A8`.
-  - 참여자명: Regular 12px, line-height 18px, 상단 간격 18px.
+  - 레이아웃: 1열, 세로 배치
+  - 카드 간 간격: 세로 `24px`
+  - 카드 크기: `w-[calc(100vw-40px)]`, aspect-ratio `353/158`
+  - 썸네일: 전체 카드 너비 기준, aspect-ratio로 높이 자동 계산
+  - 프로젝트명: SemiBold 16px, line-height 24px, letter-spacing -4%
+  - 카테고리: Regular 14px, line-height 21px, letter-spacing -4%, 색상 `#A8A8A8`
+  - 참여자명: Regular 12px, line-height 18px, letter-spacing -4%
 - 스크롤 구간 우측 중앙에 40px 플로팅 포커스 포인트(원형, 색상 `#FF00FB`) 존재.
 - 푸터: `393×188px`, 내부 래퍼 `353×126px`, 텍스트 Regular 12px/10px, 좌측 정렬, 연락처 색상 `#000000`.
 
@@ -511,10 +520,29 @@
 
 ---
 
-## 참고사항
+## 구현 참고사항
 
+### 반응형 계산 방식
+- **PC (1025px 이상)**: 사이드바 너비는 `var(--sidebar-w)` CSS 변수로 동적 계산됨
+  - 기준: 1920px 뷰포트에서 400px 사이드바
+  - 실제 사용 가능 너비: `100vw - var(--sidebar-w) - 44px` (좌우 패딩 22px × 2)
+  - 카드 크기: `(실제 사용 가능 너비) × 733 / 1476` (기준 비율)
+  
+- **태블릿 (744~1024px)**: 사이드바 너비 213.542px 고정 (1025px 기준 스케일링)
+  - 실제 사용 가능 너비: `100vw - 257.5px` (사이드바 213.542px + 좌우 패딩 44px)
+  - 카드 크기: `(실제 사용 가능 너비) × 278.52 / 576.5` (834px 기준 비율)
+  
+- **모바일 (320~743px)**: 사이드바 없음, 상단 헤더 사용
+  - 실제 사용 가능 너비: `100vw - 40px` (좌우 패딩 20px × 2)
+  - 카드 크기: aspect-ratio `353/158`로 자동 계산
+
+### CSS 변수
+- `--sidebar-w`: 사이드바 너비 (PC/태블릿에서 동적 계산, 모바일에서는 0)
+
+### 주의사항
 - 모든 측정값은 피그마 디자인 파일 기준입니다.
 - 실제 구현 시 반응형으로 인한 변동 가능성이 있습니다.
 - 이미지 비율은 디자인에 명시된 값으로 유지해야 합니다.
 - 텍스트 크기와 간격은 디자인 가이드를 정확히 따라야 합니다.
+- 태블릿 구간에서는 PC 1025px 기준 스케일링 값이 고정 적용됩니다.
 

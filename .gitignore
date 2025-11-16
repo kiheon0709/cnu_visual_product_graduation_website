@@ -51,3 +51,6 @@ pnpm-debug.log*
 
 # turborepo/turbopack cache (if used)
 .turbo/
+
+# ignore raster image folder
+public/images/

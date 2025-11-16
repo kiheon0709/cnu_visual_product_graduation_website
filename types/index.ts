@@ -6,18 +6,12 @@ export interface Project {
   category: "Capstone" | "Suhyup" | "Goods";
   description: string;
   keywords: string[];
-  designer: {
-    id: string;
-    slug: string;
-    nameEn: string;
-    nameKo?: string;
-  };
+  designerId: string;
   images: {
     thumbnail: string;
     header?: string;
-    gallery: string[];
+    gallery: string;
   };
-  createdAt: string;
 }
 
 export interface Designer {

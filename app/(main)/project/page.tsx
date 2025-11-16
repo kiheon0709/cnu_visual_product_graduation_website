@@ -1,17 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ProjectCard from "@/components/project/ProjectCard";
+import { getProjectsByCategoryWithDesigners } from "@/lib/utils/projects";
 
 const CATEGORY_TABS = [
   { label: "ALL", value: "all" },
-  { label: "Capstone", value: "capstone" },
-  { label: "Suhyup", value: "suhyup" },
-  { label: "Goods", value: "goods" },
+  { label: "Capstone", value: "Capstone" },
+  { label: "Suhyup", value: "Suhyup" },
+  { label: "Goods", value: "Goods" },
 ];
 
 export default function ProjectPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
+
+  // 카테고리로 필터링된 프로젝트와 디자이너 정보 가져오기
+  const projectsWithDesigners = useMemo(() => {
+    return getProjectsByCategoryWithDesigners(
+      activeCategory as "all" | "Capstone" | "Suhyup" | "Goods"
+    );
+  }, [activeCategory]);
+
+  // 2열 그리드를 위한 그룹화 (PC/태블릿용)
+  const projectPairs = useMemo(() => {
+    const pairs: typeof projectsWithDesigners[] = [];
+    for (let i = 0; i < projectsWithDesigners.length; i += 2) {
+      pairs.push(projectsWithDesigners.slice(i, i + 2));
+    }
+    return pairs;
+  }, [projectsWithDesigners]);
 
   return (
     <div id="project-page" className="w-full min-h-screen flex flex-col">
@@ -90,41 +107,41 @@ export default function ProjectPage() {
         >
           {/* 모바일: 카드 1개씩 직접 배치 */}
           <div className="min-[744px]:hidden">
-            <ProjectCard />
-          </div>
-          <div className="min-[744px]:hidden">
-            <ProjectCard />
-          </div>
-          <div className="min-[744px]:hidden">
-            <ProjectCard />
-          </div>
-          <div className="min-[744px]:hidden">
-            <ProjectCard />
+            {projectsWithDesigners.map((project) => (
+              <ProjectCard
+                key={project.id}
+                slug={project.slug}
+                title={project.title}
+                category={project.category}
+                designerName={project.designer?.nameKo || ""}
+                imageUrl={project.images.thumbnail}
+              />
+            ))}
           </div>
 
           {/* PC/태블릿: 카드 2개씩 묶음 컨테이너 */}
-          <div
-            className={[
-              "hidden min-[744px]:flex",
-              "w-full h-fit",
-              "justify-between",
-              "min-[1025px]:justify-start min-[1025px]:gap-3",
-            ].join(" ")}
-          >
-            <ProjectCard />
-            <ProjectCard />
-          </div>
-          <div
-            className={[
-              "hidden min-[744px]:flex",
-              "w-full h-fit",
-              "justify-between",
-              "min-[1025px]:justify-start min-[1025px]:gap-3",
-            ].join(" ")}
-          >
-            <ProjectCard />
-            <ProjectCard />
-          </div>
+          {projectPairs.map((pair, pairIndex) => (
+            <div
+              key={pairIndex}
+              className={[
+                "hidden min-[744px]:flex",
+                "w-full h-fit",
+                "justify-between",
+                "min-[1025px]:justify-start min-[1025px]:gap-3",
+              ].join(" ")}
+            >
+              {pair.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  slug={project.slug}
+                  title={project.title}
+                  category={project.category}
+                  designerName={project.designer?.nameEn || ""}
+                  imageUrl={project.images.thumbnail}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </section>
     </div>
