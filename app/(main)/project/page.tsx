@@ -35,8 +35,8 @@ export default function ProjectPage() {
       <section
         id="프로젝트 페이지 헤더 포스터"
         className={[
-          "hidden min-[744px]:block",
-          "min-[744px]:h-[260px] min-[1025px]:h-[337px]",
+          "hidden min-[1025px]:block",
+          "min-[1025px]:h-[337px]",
           "w-full overflow-hidden bg-background-gray",
         ].join(" ")}
       />
