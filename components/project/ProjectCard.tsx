@@ -10,6 +10,7 @@ interface ProjectCardProps {
   imageUrl?: string;
   description?: string;
   keywords?: string[];
+  variant?: "default" | "full"; // full: 부모 컨테이너 너비 100% 기준으로 스케일
 }
 
 export default function ProjectCard({
@@ -20,6 +21,7 @@ export default function ProjectCard({
   imageUrl,
   description,
   keywords,
+  variant = "default",
 }: ProjectCardProps) {
   const cardContent = (
     <div
@@ -27,37 +29,24 @@ export default function ProjectCard({
         "flex flex-col",
         "w-full h-fit",
         "gap-2",
-        // 모바일: 전체 너비 사용
-        "max-[743px]:w-full",
-        // 태블릿: gap 12px
-        "min-[744px]:gap-3 min-[744px]:w-fit",
-        // PC: gap 8px, 너비는 실제 컨테이너 너비 기준 비례 스케일링
-        "min-[1025px]:gap-2",
-        // PC: 실제 사용 가능 너비 기준 (1920px - 400px 사이드바 - 44px 패딩 = 1476px)
-        "min-[1025px]:w-[calc((100vw-var(--sidebar-w)-44px)*733/1476)]",
+        variant === "default" ? "max-[743px]:w-full" : "",
+        variant === "default" ? "min-[744px]:gap-3 min-[744px]:w-fit" : "",
+        variant === "default" ? "min-[1025px]:gap-2" : "",
+        variant === "default" ? "min-[1025px]:w-[calc((100vw-var(--sidebar-w)-44px)*733/1476)]" : "",
       ].join(" ")}
     >
       {/* 사진 컨테이너 */}
       <div
         className={[
           "bg-[#D9D9D9]",
-          // 모바일: 실제 컨테이너 너비 기준 (393px - 40px 패딩 = 353px)
-          // 카드 크기 353x158은 393px 기준
-          // 실제 사용 가능 너비 = 100vw - 40px (좌우 패딩 20px * 2)
-          "w-[calc(100vw-40px)]",
-          "aspect-[353/158]",
-          // 태블릿: 사이드바(메뉴바)는 1025px 기준으로 고정 (400px * 1025/1920 = 213.5px)
-          // 실제 사용 가능 너비 = 100vw - 213.5px - 44px = 100vw - 257.5px
-          // 카드 크기 278.52×155.29는 834px 기준 (메뉴바 213.5px 고정 기준으로 재계산)
-          // 834px 기준: 사이드바 213.5px(고정), 패딩 44px, 실제 사용 가능 = 834 - 213.5 - 44 = 576.5px
-          // 따라서 실제 사용 가능 너비 대비 비율로 계산: (100vw - 257.5px) * 278.52 / 576.5
-          "min-[744px]:w-[calc((100vw-257.5px)*278.52/576.5)]",
-          "min-[744px]:h-[calc((100vw-257.5px)*155.29/576.5)]",
-          "min-[744px]:aspect-auto min-[744px]:max-w-none",
-          // PC: 실제 컨테이너 너비 기준 (1920px - 400px 사이드바 - 44px 패딩 = 1476px)
-          "min-[1025px]:w-[calc((100vw-var(--sidebar-w)-44px)*733/1476)]",
-          "min-[1025px]:h-[calc((100vw-var(--sidebar-w)-44px)*412/1476)]",
-          "min-[1025px]:max-w-none",
+          variant === "default" ? "w-[calc(100vw-40px)] aspect-[353/158]" : "",
+          variant === "default"
+            ? "min-[744px]:w-[calc((100vw-257.5px)*278.52/576.5)] min-[744px]:h-[calc((100vw-257.5px)*155.29/576.5)] min-[744px]:aspect-auto min-[744px]:max-w-none"
+            : "",
+          variant === "default"
+            ? "min-[1025px]:w-[calc((100vw-var(--sidebar-w)-44px)*733/1476)] min-[1025px]:h-[calc((100vw-var(--sidebar-w)-44px)*412/1476)] min-[1025px]:max-w-none"
+            : "",
+          variant === "full" ? "w-full aspect-[733/412]" : "",
         ].join(" ")}
       >
         {/* 추후 이미지와 호버 텍스트 영역 */}

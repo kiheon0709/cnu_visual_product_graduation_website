@@ -1,3 +1,7 @@
+import Image from "next/image";
+import ProjectCard from "@/components/project/ProjectCard";
+import { getDesignerWithProjects } from "@/lib/utils/designers";
+
 interface DesignerDetailPageProps {
   params: {
     slug: string;
@@ -6,6 +10,14 @@ interface DesignerDetailPageProps {
 
 export default function DesignerDetailPage({ params }: DesignerDetailPageProps) {
   const { slug } = params;
+  const designerData = getDesignerWithProjects(slug);
+  const designer = designerData;
+  const projects = designerData?.projects || [];
+
+  const projectPairs: typeof projects[] = [];
+  for (let i = 0; i < projects.length; i += 2) {
+    projectPairs.push(projects.slice(i, i + 2));
+  }
 
   return (
     <div id="designer-detail-page" className="w-full min-h-screen flex flex-col">
@@ -18,31 +30,258 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
         ].join(" ")}
       />
       <section
-        id="디자이너 디테일 페이지 본문"
+        id="디자이너 상세 페이지 본문"
         className={[
           "w-full min-h-full flex flex-col",
-          "gap-2 px-5 pt-[23px] pb-[120px]",
-          "min-[744px]:gap-10 min-[744px]:px-[22px]",
-          "min-[744px]:pt-[57px] min-[744px]:pb-[80px]",
-          "min-[1025px]:gap-3 min-[1025px]:px-[22px]",
-          "min-[1025px]:pt-[52px] min-[1025px]:pb-[264px]",
+          "gap-[56px] px-[20px] pt-[61px] pb-[120px]",
+          "min-[744px]:gap-[72px] min-[744px]:px-[22px] min-[744px]:pt-[57px] min-[744px]:pb-[150px]",
+          "min-[1025px]:flex-row min-[1025px]:gap-[148px] min-[1025px]:px-[22px] min-[1025px]:pt-[124px] min-[1025px]:pb-[220px]",
         ].join(" ")}
       >
-        <h1 className="text-[24px] min-[744px]:text-[32px] min-[1025px]:text-[40px] font-semibold tracking-[-4%]">
-          Designer Detail
-        </h1>
-        <p className="text-[#888]">slug: {slug}</p>
         <div
-          id="디자이너 프로필 및 프로젝트 리스트 컨테이너"
+          id="디자이너 프로필 컨테이너"
+          className={[
+            "w-fit",
+            "h-fit",
+            "flex flex-row",
+            "items-stretch",
+            "gap-[16px]",
+            "min-[744px]:gap-[20px]",
+            "min-[1025px]:flex-col min-[1025px]:items-start min-[1025px]:gap-[20px]",
+          ].join(" ")}
+        >
+          <div
+            id="디자이너 프로필 이미지 컨테이너"
+            className={[
+              "flex flex-row",
+              "flex-shrink-0",
+              // 모바일/태블릿: 높이를 정보 컨테이너에 맞춤
+              "h-full",
+              "min-[1025px]:h-fit",
+              // PC: 너비를 정보 컨테이너에 맞춤
+              "min-[1025px]:w-full",
+            ].join(" ")}
+          >
+            <div
+              id="디자이너 프로필 이미지 프레임"
+              className={[
+                "relative",
+                "overflow-hidden",
+                "rounded-none",
+                "aspect-square",
+                // 모바일/태블릿: 높이를 부모(정보 컨테이너 높이)에 맞춤
+                "h-full",
+                "w-auto",
+                // PC: 너비를 부모(정보 컨테이너 너비)에 맞춤
+                "min-[1025px]:w-full",
+                "min-[1025px]:h-auto",
+              ].join(" ")}
+            >
+              {designer && (
+                <Image
+                  src={designer.profileImage}
+                  alt={designer.nameEn}
+                  fill
+                  className="object-cover object-top"
+                  priority={false}
+                />
+              )}
+            </div>
+          </div>
+          <div id="디자이너 정보 컨테이너" className={[
+            "w-fit",
+            "h-fit",
+            "flex flex-col",
+            "gap-[27px]",
+            "min-[744px]:gap-[12px]",
+            "min-[1025px]:gap-[12px]",
+          ].join(" ")}>
+            {/* 1. 영문이름 + 역할 */}
+            <div id="디자이너 정보 - 이름 및 역할" className={[
+              "w-fit",
+              "flex flex-col",
+            ].join(" ")}>
+              {designer && (
+                <>
+                  <h2
+                    id="디자이너 영어이름"
+                    className={[
+                      "w-fit font-bold text-black tracking-[-4%]",
+                      "text-[16px]",
+                      "min-[744px]:text-[26px]",
+                      "min-[1025px]:text-[32px]",
+                    ].join(" ")}
+                  >
+                    {designer.nameEn}
+                  </h2>
+                  <p id="디자이너 역할" 
+                     className={[
+                      "w-fit font-regular text-[#868686] tracking-[-4%]",
+                      "text-[14px]",
+                      "min-[744px]:text-[18px]",
+                      "min-[1025px]:text-[20px]",
+                  ].join(" ")}>
+                    {designer.role}
+                  </p>
+                </>
+              )}
+            </div>
+
+            {/* 2. 디자이너 소개글 */}
+            <div id="디자이너 정보 - 소개글" className={[
+              "w-fit",
+              "hidden",
+              "min-[744px]:flex",
+              "flex-col",
+            ].join(" ")}>
+              {designer && (
+                <p className={[
+                  "w-fit text-[#858585] tracking-[-4%]",
+                  "text-[14px]",
+                  "min-[744px]:text-[18px]",
+                  "min-[1025px]:text-[20px]",
+                ].join(" ")}>
+                  {designer.introduction}
+                </p>
+              )}
+            </div>
+
+            {/* 3. 컨택주소 */}
+            <div id="디자이너 정보 - 컨택주소" className={[
+              "w-fit",
+              "flex flex-col",
+              "gap-[10px]",
+              "min-[744px]:gap-[16px]",
+              "min-[1025px]:gap-[16px]",
+            ].join(" ")}>
+              {designer?.contact.email && (
+                <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">
+                  <Image
+                    src="/images/logo/Email.svg"
+                    alt="email"
+                    width={24}
+                    height={24}
+                    className={[
+                      "w-[16px] h-[12px]",
+                      "min-[744px]:w-[20px] min-[744px]:h-[20px]",
+                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                    ].join(" ")}
+                  />
+                  <p className="w-fit text-[#858585] tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px]">
+                    {designer.contact.email}
+                  </p>
+                </div>
+              )}
+
+              {designer?.contact.behance && (
+                <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">
+                  <Image
+                    src="/images/logo/Behance.svg"
+                    alt="behance"
+                    width={24}
+                    height={24}
+                    className={[
+                      "w-[16px] h-[16px]",
+                      "min-[744px]:w-[20px] min-[744px]:h-[20px]",
+                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                    ].join(" ")}
+                  />
+                  <p className="w-fit text-[#858585] tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
+                    {designer.contact.behance}
+                  </p>
+                </div>
+              )}
+
+              {designer?.contact.instagram && (
+                <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">
+                  <Image
+                    src="/images/logo/Instagram.svg"
+                    alt="instagram"
+                    width={24}
+                    height={24}
+                    className={[
+                      "w-[16px] h-[16px]",
+                      "min-[744px]:w-[20px] min-[744px]:h-[20px]",
+                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                    ].join(" ")}
+                  />
+                  <p className="w-fit text-[#858585] tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
+                    {designer.contact.instagram}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <div
+          id="디자이너 프로젝트 리스트 컨테이너 1"
           className={[
             "w-full",
             "flex flex-col",
-            "gap-6",
-            "min-[744px]:gap-[18px]",
-            "min-[1025px]:gap-[44px]",
+            "gap-[8px]",
+            "min-[744px]:gap-[0px]",
+            "min-[1025px]:gap-[0px]",
           ].join(" ")}
         >
-          {/* TODO: 프로필 영역 및 프로젝트 리스트 구성 예정 */}
+          <h3
+            id="디자이너 프로젝트 리스트 제목"
+            className={[
+              "block min-[744px]:hidden",
+              "font-semibold text-black tracking-[-4%]",
+              "text-[24px]",
+            ].join(" ")}
+          >
+            Project
+          </h3>
+          <div
+            id="디자이너 프로젝트 리스트 컨테이너 2"
+            className={[
+              "w-full",
+              "flex flex-col",
+              "gap-[24px]",
+              "min-[744px]:gap-[28px]",
+              "min-[1025px]:gap-[56px]",
+            ].join(" ")}>
+              {/* 모바일: 1열 1개 */}
+              <div className="flex flex-col gap-[24px] min-[744px]:hidden">
+                {projects.map((p) => (
+                  <ProjectCard
+                    key={p.id}
+                    slug={p.slug}
+                    title={p.title}
+                    category={p.category}
+                    designerName={designer?.nameKo || designer?.nameEn || ""}
+                    imageUrl={p.images.thumbnail}
+                    variant="full"
+                  />
+                ))}
+              </div>
+              {/* 태블릿/PC: 1열에 2개씩 묶음 컨테이너 */}
+              {projectPairs.map((pair, idx) => (
+                <div
+                  key={idx}
+                  className={[
+                    "hidden min-[744px]:flex min-[744px]:gap-[20px]",
+                    "w-full h-fit",
+                    "justify-between",
+                    "min-[1025px]:justify-start min-[1025px]:gap-[12px]",
+                  ].join(" ")}
+                >
+                  {pair.map((p) => (
+                    <div key={p.id} className="flex-1">
+                      <ProjectCard
+                        slug={p.slug}
+                        title={p.title}
+                        category={p.category}
+                        designerName={designer?.nameEn || ""}
+                        imageUrl={p.images.thumbnail}
+                        variant="full"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
         </div>
       </section>
     </div>

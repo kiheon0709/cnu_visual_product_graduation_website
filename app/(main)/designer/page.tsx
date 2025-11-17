@@ -1,3 +1,6 @@
+import DesignerCard from "@/components/designer/DesignerCard";
+import { designers } from "@/lib/data/designers";
+
 export default function DesignerPage() {
   return (
     <div id="designer-page" className="w-full min-h-screen flex flex-col">
@@ -24,13 +27,31 @@ export default function DesignerPage() {
         <div
           id="디자이너 카드 그리드 컨테이너"
           className={[
-            "w-full flex flex-col",
+            "w-full",
+            "grid",
+            // 모바일 2열
+            "grid-cols-2",
+            // 태블릿 3열
+            "min-[744px]:grid-cols-3",
+            // PC 기본 3열, 충분히 넓어지면 4열
+            "min-[1025px]:grid-cols-3",
+            "min-[1280px]:grid-cols-4",
+            // 카드 간격
             "gap-[8px]",
-            "min-[744px]:gap-[24px]",
-            "min-[1025px]:gap-[52px]",
+            "min-[744px]:gap-[14px]",
+            "min-[1025px]:gap-[16px]",
           ].join(" ")}
         >
-          {/* TODO: 디자이너 그리드 구성 예정 */}
+          {designers.map((d) => (
+            <DesignerCard
+              key={d.id}
+              slug={d.slug}
+              nameEn={d.nameEn}
+              nameKo={d.nameKo}
+              roleOrDept={d.role || undefined}
+              profileImage={d.profileImage}
+            />
+          ))}
         </div>
       </section>
     </div>

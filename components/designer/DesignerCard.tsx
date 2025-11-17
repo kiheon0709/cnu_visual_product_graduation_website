@@ -18,17 +18,24 @@ export default function DesignerCard({
 }: DesignerCardProps) {
   return (
     <Link
+      id="디자이너 카드 컨테이너 영역"
       href={`/designer/${slug}`}
       className={[
         "group",
         "block w-full",
+        "flex flex-col",
+        "gap-[8px]",
+        "min-[744px]:gap-[14px]",
+        "min-[1025px]:gap-[16px]",
       ].join(" ")}
       aria-label={`${nameEn} 상세 페이지로 이동`}
     >
+      {/* 사진 컨테이너 */}
       <div
+        id="디자이너 카드 - 사진 컨테이너"
         className={[
-          "w-full",
-          "bg-[#efefef]",
+          "w-full h-full",
+          "relative",
           "overflow-hidden",
           "rounded-none",
           // 이미지 프레임은 정사각형을 기본으로
@@ -38,26 +45,26 @@ export default function DesignerCard({
         <Image
           src={profileImage}
           alt={nameEn}
-          width={354}
-          height={354}
+          fill
           className={[
-            "w-full h-full object-cover",
-            "transition-transform duration-300",
-            "group-hover:scale-[1.03]",
+            "object-cover object-top",
+            // "transition-transform duration-300",
+            // "group-hover:scale-[1.03]",
           ].join(" ")}
           priority={false}
         />
       </div>
 
+      {/* 디자이너 이름 컨테이너 */}
       <div
+        id="디자이너 카드 - 이름 컨테이너"
         className={[
-          "mt-3",
           "flex flex-col",
-          "gap-[2px]",
-          "min-[1025px]:mt-4",
         ].join(" ")}
       >
+        {/* 영문명 */}
         <p
+          id="디자이너 카드 - 영문명"
           className={[
             "text-black font-semibold tracking-[-4%]",
             "text-[16px]",
@@ -67,16 +74,18 @@ export default function DesignerCard({
         >
           {nameEn}
         </p>
-        {(nameKo || roleOrDept) && (
+        {nameKo && (
+          /* 한글명 */
           <p
+            id="디자이너 카드 - 한글명"
             className={[
-              "text-[#858585] tracking-[-4%]",
+              "text-[#A8A8A8] font-regular tracking-[-4%]",
               "text-[14px]",
-              "min-[744px]:text-[16px]",
+              "min-[744px]:text-[18px]",
               "min-[1025px]:text-[20px]",
             ].join(" ")}
           >
-            {nameKo || roleOrDept}
+            {nameKo}
           </p>
         )}
       </div>

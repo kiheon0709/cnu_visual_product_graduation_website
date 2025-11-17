@@ -1,4 +1,9 @@
+import ArchiveCard from "@/components/archive/ArchiveCard";
+import { getAllArchives } from "@/lib/utils/archive";
+
 export default function ArchivePage() {
+  const archives = getAllArchives();
+
   return (
     <div id="archive-page" className="w-full min-h-screen flex flex-col">
       <section
@@ -13,28 +18,14 @@ export default function ArchivePage() {
         id="아카이브 페이지 본문"
         className={[
           "w-full min-h-full flex flex-col",
-          "gap-2 px-5 pt-[23px] pb-[120px]",
-          "min-[744px]:gap-10 min-[744px]:px-[22px]",
-          "min-[744px]:pt-[57px] min-[744px]:pb-[80px]",
-          "min-[1025px]:gap-3 min-[1025px]:px-[22px]",
-          "min-[1025px]:pt-[52px] min-[1025px]:pb-[264px]",
+          "gap-[24px] px-[20px] py-[61px]",
+          "min-[744px]:gap-[22px] min-[744px]:px-[22px] min-[744px]:pt-[57px] min-[744px]:pb-[80px]",
+          "min-[1025px]:flex-row min-[1025px]:gap-[12px] min-[1025px]:px-[22px] min-[1025px]:pt-[124px] min-[1025px]:pb-[200px]",
         ].join(" ")}
       >
-        <h1 className="text-[24px] min-[744px]:text-[32px] min-[1025px]:text-[40px] font-semibold tracking-[-4%]">
-          Archive
-        </h1>
-        <div
-          id="아카이브 그리드 컨테이너"
-          className={[
-            "w-full",
-            "flex flex-col",
-            "gap-6",
-            "min-[744px]:gap-[18px]",
-            "min-[1025px]:gap-[44px]",
-          ].join(" ")}
-        >
-          {/* TODO: 아카이브 그리드 구성 예정 */}
-        </div>
+        {archives.map((archive) => (
+          <ArchiveCard key={archive.id} archive={archive} />
+        ))}
       </section>
     </div>
   );
