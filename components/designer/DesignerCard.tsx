@@ -7,6 +7,7 @@ interface DesignerCardProps {
   nameKo?: string;
   roleOrDept?: string;
   profileImage: string; // public 경로 e.g. "/images/designers/profile/이건홍.jpg"
+  priority?: boolean;
 }
 
 export default function DesignerCard({
@@ -15,6 +16,7 @@ export default function DesignerCard({
   nameKo,
   roleOrDept,
   profileImage,
+  priority = false,
 }: DesignerCardProps) {
   return (
     <Link
@@ -51,7 +53,7 @@ export default function DesignerCard({
             // "transition-transform duration-300",
             // "group-hover:scale-[1.03]",
           ].join(" ")}
-          priority={false}
+          priority={priority}
         />
       </div>
 

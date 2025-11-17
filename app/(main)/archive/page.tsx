@@ -23,8 +23,8 @@ export default function ArchivePage() {
           "min-[1025px]:flex-row min-[1025px]:gap-[12px] min-[1025px]:px-[22px] min-[1025px]:pt-[124px] min-[1025px]:pb-[200px]",
         ].join(" ")}
       >
-        {archives.map((archive) => (
-          <ArchiveCard key={archive.id} archive={archive} />
+        {archives.map((archive, index) => (
+          <ArchiveCard key={archive.id} archive={archive} priority={index === 0} />
         ))}
       </section>
     </div>

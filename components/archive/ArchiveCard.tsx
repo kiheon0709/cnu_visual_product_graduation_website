@@ -6,9 +6,10 @@ import { Archive } from "@/types";
 
 interface ArchiveCardProps {
   archive: Archive;
+  priority?: boolean;
 }
 
-export default function ArchiveCard({ archive }: ArchiveCardProps) {
+export default function ArchiveCard({ archive, priority = false }: ArchiveCardProps) {
   const cardContent = (
     <div
       id="아카이브 카드 컨테이너"
@@ -41,7 +42,7 @@ export default function ArchiveCard({ archive }: ArchiveCardProps) {
               "w-full",
               "h-auto",
             ].join(" ")}
-            priority={false}
+            priority={priority}
           />
         )}
       </div>

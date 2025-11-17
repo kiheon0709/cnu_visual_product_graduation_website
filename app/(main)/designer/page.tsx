@@ -42,7 +42,7 @@ export default function DesignerPage() {
             "min-[1025px]:gap-[16px]",
           ].join(" ")}
         >
-          {designers.map((d) => (
+          {designers.map((d, index) => (
             <DesignerCard
               key={d.id}
               slug={d.slug}
@@ -50,6 +50,7 @@ export default function DesignerPage() {
               nameKo={d.nameKo}
               roleOrDept={d.role || undefined}
               profileImage={d.profileImage}
+              priority={index < 4}
             />
           ))}
         </div>
