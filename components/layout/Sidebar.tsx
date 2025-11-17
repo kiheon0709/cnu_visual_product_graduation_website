@@ -204,10 +204,20 @@ export default function Sidebar() {
 
       // 모바일에서만 스크롤 감지 (743px 이하)
       if (window.innerWidth <= 743) {
+        // 스크롤이 끝에 도달했는지 확인
+        const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+        const isAtBottom = currentScrollY >= maxScrollY - 1; // 1px 여유를 둠
+
         setIsVisible((prev) => {
+          // 스크롤 끝에 도달했을 때는 숨긴 상태 유지
+          if (isAtBottom && currentScrollY > 50) {
+            return false;
+          }
+          // 아래로 스크롤하고 50px 이상이면 숨김
           if (currentScrollY > lastScrollY && currentScrollY > 50) {
             return false;
           }
+          // 위로 스크롤하거나 50px 이하면 보임
           if (currentScrollY < lastScrollY || currentScrollY <= 50) {
             return true;
           }
