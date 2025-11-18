@@ -6,3 +6,10 @@
  */
 export const ENABLE_MENU_ON_HOME = false;
 
+/**
+ * 페이지 준비중 메시지 표시 여부
+ * true로 설정하면 홈 화면에 "페이지 준비중입니다." 메시지가 표시됩니다.
+ * false로 설정하면 메시지가 표시되지 않습니다.
+ */
+export const SHOW_PREPARING_MESSAGE = true;
+

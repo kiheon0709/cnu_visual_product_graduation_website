@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Footer from "@/components/layout/Footer";
+import { SHOW_PREPARING_MESSAGE } from "@/lib/config";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -70,18 +71,26 @@ export default function Home() {
         }}
       >
         {/* 무빙 포스터 비디오 영역 - 정가운데 배치 */}
-        <video
-          ref={videoRef}
-          src="/images/main/main.mp4"
-          className="main-poster-video object-contain"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          controls={false}
-          disablePictureInPicture
-        />
+        <div className="relative">
+          <video
+            ref={videoRef}
+            src="/images/main/main.mp4"
+            className="main-poster-video object-contain"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            controls={false}
+            disablePictureInPicture
+          />
+          {/* 페이지 준비중 텍스트 오버레이 */}
+          {SHOW_PREPARING_MESSAGE && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="preparing-message text-white font-medium">페이지 준비중입니다.</p>
+            </div>
+          )}
+        </div>
       </div>
       {/* 모바일에서만 푸터 표시 */}
       <div className="max-[743px]:block min-[744px]:hidden">

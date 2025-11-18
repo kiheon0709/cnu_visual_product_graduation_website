@@ -52,3 +52,22 @@ a {
   }
 }
 
+/* 페이지 준비중 메시지 폰트 크기 - 포스터 너비에 비례 */
+.preparing-message {
+  font-size: 60px;
+}
+
+/* 모바일: 포스터 너비에 비례 */
+@media (max-width: 743px) {
+  .preparing-message {
+    font-size: calc(100vw * 40 / 744);
+  }
+}
+
+/* 태블릿/데스크톱: 포스터 너비에 비례, 최대 60px */
+@media (min-width: 744px) {
+  .preparing-message {
+    font-size: clamp(0px, calc((100vw - 400px) * 60 / 860), 60px);
+  }
+}
+
