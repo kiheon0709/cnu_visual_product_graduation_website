@@ -32,49 +32,35 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
       <section
         id="디자이너 상세 페이지 본문"
         className={[
-          "w-full min-h-full flex flex-col",
+          "w-full h-full flex flex-col",
           "gap-[56px] px-[20px] pt-[61px] pb-[120px]",
           "min-[744px]:gap-[72px] min-[744px]:px-[22px] min-[744px]:pt-[57px] min-[744px]:pb-[150px]",
-          "min-[1025px]:flex-row min-[1025px]:gap-[148px] min-[1025px]:px-[22px] min-[1025px]:pt-[124px] min-[1025px]:pb-[220px]",
+          "min-[1025px]:gap-[62px] min-[1025px]:px-[22px] min-[1025px]:pt-[124px] min-[1025px]:pb-[220px]",
         ].join(" ")}
       >
         <div
           id="디자이너 프로필 컨테이너"
           className={[
-            "w-fit",
-            "h-fit",
+            "w-full",
             "flex flex-row",
-            "items-stretch",
             "gap-[16px]",
             "min-[744px]:gap-[20px]",
-            "min-[1025px]:flex-col min-[1025px]:items-start min-[1025px]:gap-[20px]",
+            "min-[1025px]:gap-[44px]",
           ].join(" ")}
         >
           <div
             id="디자이너 프로필 이미지 컨테이너"
             className={[
               "flex flex-row",
-              "flex-shrink-0",
-              // 모바일/태블릿: 높이를 정보 컨테이너에 맞춤
+              "w-fit",
               "h-full",
-              "min-[1025px]:h-fit",
-              // PC: 너비를 정보 컨테이너에 맞춤
-              "min-[1025px]:w-full",
             ].join(" ")}
           >
             <div
               id="디자이너 프로필 이미지 프레임"
               className={[
-                "relative",
-                "overflow-hidden",
-                "rounded-none",
-                "aspect-square",
-                // 모바일/태블릿: 높이를 부모(정보 컨테이너 높이)에 맞춤
                 "h-full",
-                "w-auto",
-                // PC: 너비를 부모(정보 컨테이너 너비)에 맞춤
-                "min-[1025px]:w-full",
-                "min-[1025px]:h-auto",
+                "w-fit",
               ].join(" ")}
             >
               {designer && (
@@ -89,16 +75,16 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
             </div>
           </div>
           <div id="디자이너 정보 컨테이너" className={[
-            "w-fit",
+            "w-full",
             "h-fit",
             "flex flex-col",
-            "gap-[27px]",
-            "min-[744px]:gap-[12px]",
-            "min-[1025px]:gap-[12px]",
+            "gap-[27px] py-[10px]",
+            "min-[744px]:gap-[12px] min-[744px]:py-[0px]",
+            "min-[1025px]:gap-[12px] min-[1025px]:py-[0px]",
           ].join(" ")}>
             {/* 1. 영문이름 + 역할 */}
             <div id="디자이너 정보 - 이름 및 역할" className={[
-              "w-fit",
+              "w-full h-fit",
               "flex flex-col",
             ].join(" ")}>
               {designer && (
@@ -129,7 +115,7 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
 
             {/* 2. 디자이너 소개글 */}
             <div id="디자이너 정보 - 소개글" className={[
-              "w-fit",
+              "w-full h-fit",
               "hidden",
               "min-[744px]:flex",
               "flex-col",
@@ -148,11 +134,11 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
 
             {/* 3. 컨택주소 */}
             <div id="디자이너 정보 - 컨택주소" className={[
-              "w-fit",
+              "w-full h-fit",
               "flex flex-col",
               "gap-[10px]",
-              "min-[744px]:gap-[16px]",
-              "min-[1025px]:gap-[16px]",
+              "min-[744px]:gap-[4px]",
+              "min-[1025px]:gap-[12px]",
             ].join(" ")}>
               {designer?.contact.email && (
                 <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">

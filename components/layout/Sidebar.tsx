@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ENABLE_MENU_ON_HOME } from "@/lib/config";
 
 type Breakpoint = "mobile" | "tablet-home" | "tablet-detail" | "pc";
 
@@ -196,6 +197,10 @@ export default function Sidebar() {
     return pathname === href;
   };
 
+  // 홈 화면에서 메뉴 비활성화 여부 확인
+  const isHomePage = pathname === "/";
+  const isMenuDisabled = isHomePage && !ENABLE_MENU_ON_HOME;
+
   // 모바일 스크롤 감지
   useEffect(() => {
     const handleScroll = () => {
@@ -303,16 +308,24 @@ export default function Sidebar() {
           <ul className="flex flex-row items-center gap-[20px]">
             {navItems.map((item) => {
               const active = isActive(item.href);
+              const menuClassName = `transition-colors text-[min(calc(16px*100vw/393px),16px)] leading-[18.1px] tracking-[-4%] flex items-center justify-center max-[743px]:w-full ${
+                active ? "font-semibold text-primary" : "font-medium text-[#c0c0c0]"
+              } ${isMenuDisabled ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}`;
+              
               return (
                 <li key={item.name} className="max-[743px]:w-[calc(96px*100vw/393px)] max-[743px]:py-[4.52px] min-[744px]:w-auto">
-                  <Link
-                    href={item.href}
-                    className={`transition-colors text-[min(calc(16px*100vw/393px),16px)] leading-[18.1px] tracking-[-4%] flex items-center justify-center max-[743px]:w-full ${
-                      active ? "font-semibold text-primary" : "font-medium text-[#c0c0c0]"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
+                  {isMenuDisabled ? (
+                    <span className={menuClassName}>
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={menuClassName}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </li>
               );
             })}
@@ -397,22 +410,40 @@ export default function Sidebar() {
           >
             {navItems.map((item) => {
               const active = isActive(item.href);
+              const menuClassName = `transition-colors tracking-[-4%] ${active ? "font-semibold text-primary" : "font-normal text-[#c0c0c0]"} ${isMenuDisabled ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}`;
+              
               return (
                 <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className={`transition-colors tracking-[-4%] ${active ? "font-semibold text-primary" : "font-normal text-[#c0c0c0]"}`}
-                    style={
-                      isMobile
-                        ? undefined
-                        : {
-                            fontSize: metrics.menuFont,
-                            lineHeight: formattedValue(metrics.menuLineHeight),
-                          }
-                    }
-                  >
-                    {item.name}
-                  </Link>
+                  {isMenuDisabled ? (
+                    <span
+                      className={menuClassName}
+                      style={
+                        isMobile
+                          ? undefined
+                          : {
+                              fontSize: metrics.menuFont,
+                              lineHeight: formattedValue(metrics.menuLineHeight),
+                            }
+                      }
+                    >
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={menuClassName}
+                      style={
+                        isMobile
+                          ? undefined
+                          : {
+                              fontSize: metrics.menuFont,
+                              lineHeight: formattedValue(metrics.menuLineHeight),
+                            }
+                      }
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </li>
               );
             })}

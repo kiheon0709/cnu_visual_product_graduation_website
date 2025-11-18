@@ -30,3 +30,25 @@ a {
   text-decoration: none;
 }
 
+/* 메인 홈 비디오 반응형 스타일 */
+.main-poster-video {
+  width: 600px;
+  height: auto;
+}
+
+/* 모바일: 744px에서 400px, 그보다 작으면 비례해서 줄어듦 */
+@media (max-width: 743px) {
+  .main-poster-video {
+    width: calc(100vw * 400 / 744);
+  }
+}
+
+/* 태블릿/데스크톱: 메인 콘텐츠 영역 너비 기준 (사이드바 제외) */
+/* 1260px 뷰포트 = 860px 메인 콘텐츠 영역 기준 */
+@media (min-width: 744px) {
+  .main-poster-video {
+    width: calc((100vw - 400px) * 600 / 860);
+    max-width: 600px;
+  }
+}
+

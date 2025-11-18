@@ -131,14 +131,14 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             ].join(" ")}
           >
             {/* 디자이너 프로필 이미지*/}
-            <div className="w-fit h-fit flex flex-col">
+            <div className="h-full flex flex-col">
               <Image 
                 src={designer.profileImage} 
                 alt={designer.nameEn} 
                 width={160} 
                 height={160}
                 className={[
-                  "w-[170px] h-auto",
+                  "w-[160px] h-auto",
                   "min-[744px]:w-[120px] min-[744px]:h-auto",
                   "min-[1025px]:w-[160px] min-[1025px]:h-auto",
                 ].join(" ")}

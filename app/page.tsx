@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -61,13 +62,18 @@ export default function Home() {
   }, []);
   
   return (
-    <div className="relative w-full min-h-screen bg-background-gray">
-      <div className="w-full">
-        {/* 메인 포스터 비디오 영역 - 세로 스크롤 가능, 잘림 없이 표시 */}
+    <div className="relative w-full min-h-screen flex flex-col">
+      <div 
+        className="relative w-full flex-1 flex items-center justify-center"
+        style={{
+          background: 'linear-gradient(to bottom, #4E5353, #ADB9B8)'
+        }}
+      >
+        {/* 무빙 포스터 비디오 영역 - 정가운데 배치 */}
         <video
           ref={videoRef}
           src="/images/main/main.mp4"
-          className="w-full h-auto object-contain"
+          className="main-poster-video object-contain"
           autoPlay
           loop
           muted
@@ -76,6 +82,10 @@ export default function Home() {
           controls={false}
           disablePictureInPicture
         />
+      </div>
+      {/* 모바일에서만 푸터 표시 */}
+      <div className="max-[743px]:block min-[744px]:hidden">
+        <Footer />
       </div>
     </div>
   );
