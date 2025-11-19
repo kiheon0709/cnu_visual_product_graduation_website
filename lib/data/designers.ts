@@ -8,7 +8,7 @@ export const designers: Designer[] = [
     nameKo: "김도이",
     role: "Product designer",
     profileImage: "/images/designers/profile/김도이.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글",
     contact: {
       email: "designer1@test.com",
       behance: "https://www.behance.net/designer1",
@@ -23,7 +23,7 @@ export const designers: Designer[] = [
     nameKo: "김민주",
     role: "Product designer",
     profileImage: "/images/designers/profile/김민주.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer2@test.com",
       behance: null,
@@ -38,7 +38,7 @@ export const designers: Designer[] = [
     nameKo: "박진현",
     role: "Product designer",
     profileImage: "/images/designers/profile/박진현.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer3@test.com",
       behance: "https://www.behance.net/designer3",
@@ -53,7 +53,7 @@ export const designers: Designer[] = [
     nameKo: "배유진",
     role: "Product designer",
     profileImage: "/images/designers/profile/배유진.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer4@test.com",
       behance: null,
@@ -68,7 +68,7 @@ export const designers: Designer[] = [
     nameKo: "이건홍",
     role: "Product designer",
     profileImage: "/images/designers/profile/이건홍.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: null,
       behance: null,
@@ -83,7 +83,7 @@ export const designers: Designer[] = [
     nameKo: "이준하",
     role: "Product designer",
     profileImage: "/images/designers/profile/이준하.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer6@test.com",
       behance: null,
@@ -98,7 +98,7 @@ export const designers: Designer[] = [
     nameKo: "허태선",
     role: "Product designer",
     profileImage: "/images/designers/profile/허태선.jpg",
-    introduction: "소개글 소개글 소개글 소개글 소개글",
+    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: null,
       behance: "https://www.behance.net/designer7",

@@ -41,7 +41,7 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
         <div
           id="디자이너 프로필 컨테이너"
           className={[
-            "w-full",
+            "w-full h-fit",
             "flex flex-row",
             "gap-[16px]",
             "min-[744px]:gap-[20px]",
@@ -50,29 +50,24 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
         >
           <div
             id="디자이너 프로필 이미지 컨테이너"
-            className={[
-              "flex flex-row",
-              "w-fit",
-              "h-full",
-            ].join(" ")}
-          >
-            <div
-              id="디자이너 프로필 이미지 프레임"
               className={[
-                "h-full",
-                "w-fit",
+                "flex-shrink-0",
+                "aspect-square",
+                "max-w-[170px]",
+                "min-[744px]:aspect-auto min-[744px]:self-stretch min-[744px]:max-w-[200px]",
+                "min-[1025px]:max-w-[230px]",
               ].join(" ")}
-            >
-              {designer && (
-                <Image
-                  src={designer.profileImage}
-                  alt={designer.nameEn}
-                  fill
-                  className="object-cover object-top"
-                  priority={false}
-                />
-              )}
-            </div>
+          >
+            {designer && (
+              <img
+                src={designer.profileImage}
+                alt={designer.nameEn}
+                className="h-full w-full object-cover min-[744px]:w-auto min-[744px]:object-contain min-[744px]:object-center"
+                style={{
+                  objectPosition: '50% -10px'
+                }}
+              />
+            )}
           </div>
           <div id="디자이너 정보 컨테이너" className={[
             "w-full",
@@ -80,13 +75,24 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
             "flex flex-col",
             "gap-[27px] py-[10px]",
             "min-[744px]:gap-[12px] min-[744px]:py-[0px]",
-            "min-[1025px]:gap-[12px] min-[1025px]:py-[0px]",
+            "min-[1025px]:gap-[48px] min-[1025px]:py-[0px]",
           ].join(" ")}>
-            {/* 1. 영문이름 + 역할 */}
-            <div id="디자이너 정보 - 이름 및 역할" className={[
+            {/* 디자이너 정보 - 이름, 역할, 소개글 */}
+            <div id="디자이너 정보 - 이름, 역할, 소개글" className={[
               "w-full h-fit",
               "flex flex-col",
+              "gap-[4px]",
+              "min-[744px]:gap-[12px]",
+              "min-[1025px]:gap-[18px]",
             ].join(" ")}>
+              {/* 1. 영문이름 + 역할 */}
+              <div id="디자이너 정보 - 이름 및 역할" className={[
+                "gap-[4px]",
+                "min-[744px]:gap-[0px]",
+                "min-[1025px]:gap-[0px]",
+                "w-full h-fit",
+                "flex flex-col",
+              ].join(" ")}>
               {designer && (
                 <>
                   <h2
@@ -111,92 +117,92 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
                   </p>
                 </>
               )}
+              </div>
+              {/* 2. 디자이너 소개글 */}
+              <div id="디자이너 정보 - 소개글" className={[
+                "w-full h-fit",
+                "hidden",
+                "min-[744px]:flex",
+                "flex-col",
+                "min-[1025px]:max-w-[800px]",
+              ].join(" ")}>
+                {designer && (
+                  <p className={[
+                    "w-fit text-[#858585] tracking-[-4%]",
+                    "text-[14px]",
+                    "min-[744px]:text-[18px]",
+                    "min-[1025px]:text-[20px]",
+                  ].join(" ")}>
+                    {designer.introduction}
+                  </p>
+                )}
+              </div>
             </div>
-
-            {/* 2. 디자이너 소개글 */}
-            <div id="디자이너 정보 - 소개글" className={[
-              "w-full h-fit",
-              "hidden",
-              "min-[744px]:flex",
-              "flex-col",
-            ].join(" ")}>
-              {designer && (
-                <p className={[
-                  "w-fit text-[#858585] tracking-[-4%]",
-                  "text-[14px]",
-                  "min-[744px]:text-[18px]",
-                  "min-[1025px]:text-[20px]",
-                ].join(" ")}>
-                  {designer.introduction}
+          {/* 3. 컨택주소 */}
+          <div id="디자이너 정보 - 컨택주소" className={[
+            "w-full h-fit",
+            "flex flex-col",
+            "gap-[10px]",
+            "min-[744px]:gap-[4px]",
+            "min-[1025px]:flex-row min-[1025px]:gap-[24px]",
+          ].join(" ")}>
+            {designer?.contact.email && (
+              <div className="w-fit h-fit flex flex-row items-center flex-shrink-0 gap-[8px] min-[744px]:gap-[16px] min-[1025px]:gap-[16px]">
+                <Image
+                  src="/images/logo/Email.svg"
+                  alt="email"
+                  width={24}
+                  height={24}
+                  className={[
+                    "w-[16px] h-[12px]",
+                    "min-[744px]:w-[20px] min-[744px]:h-[20px]",
+                    "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                  ].join(" ")}
+                />
+                <p className="w-fit text-[#868686] font-regular tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px]">
+                  {designer.contact.email}
                 </p>
-              )}
-            </div>
+              </div>
+            )}
 
-            {/* 3. 컨택주소 */}
-            <div id="디자이너 정보 - 컨택주소" className={[
-              "w-full h-fit",
-              "flex flex-col",
-              "gap-[10px]",
-              "min-[744px]:gap-[4px]",
-              "min-[1025px]:gap-[12px]",
-            ].join(" ")}>
-              {designer?.contact.email && (
-                <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">
-                  <Image
-                    src="/images/logo/Email.svg"
-                    alt="email"
-                    width={24}
-                    height={24}
-                    className={[
-                      "w-[16px] h-[12px]",
-                      "min-[744px]:w-[20px] min-[744px]:h-[20px]",
-                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
-                    ].join(" ")}
-                  />
-                  <p className="w-fit text-[#858585] tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px]">
-                    {designer.contact.email}
-                  </p>
-                </div>
-              )}
+            {designer?.contact.behance && (
+              <div className="w-fit h-fit flex flex-row items-center flex-shrink-0 gap-[8px] min-[744px]:gap-[16px] min-[1025px]:gap-[16px]">
+                <Image
+                  src="/images/logo/Behance.svg"
+                  alt="behance"
+                  width={24}
+                  height={24}
+                  className={[
+                    "w-[16px] h-[16px]",
+                    "min-[744px]:w-[20px] min-[744px]:h-[20px]",
+                    "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                  ].join(" ")}
+                />
+                <p className="w-fit text-[#868686] font-regular tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
+                  {designer.contact.behance}
+                </p>
+              </div>
+            )}
 
-              {designer?.contact.behance && (
-                <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">
-                  <Image
-                    src="/images/logo/Behance.svg"
-                    alt="behance"
-                    width={24}
-                    height={24}
-                    className={[
-                      "w-[16px] h-[16px]",
-                      "min-[744px]:w-[20px] min-[744px]:h-[20px]",
-                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
-                    ].join(" ")}
-                  />
-                  <p className="w-fit text-[#858585] tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
-                    {designer.contact.behance}
-                  </p>
-                </div>
-              )}
-
-              {designer?.contact.instagram && (
-                <div className="w-fit h-fit flex flex-row items-center gap-[10px] min-[744px]:gap-[12px] min-[1025px]:gap-[16px]">
-                  <Image
-                    src="/images/logo/Instagram.svg"
-                    alt="instagram"
-                    width={24}
-                    height={24}
-                    className={[
-                      "w-[16px] h-[16px]",
-                      "min-[744px]:w-[20px] min-[744px]:h-[20px]",
-                      "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
-                    ].join(" ")}
-                  />
-                  <p className="w-fit text-[#858585] tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
-                    {designer.contact.instagram}
-                  </p>
-                </div>
-              )}
-            </div>
+            {designer?.contact.instagram && (
+              <div className="w-fit h-fit flex flex-row items-center flex-shrink-0 gap-[8px] min-[744px]:gap-[16px] min-[1025px]:gap-[16px]">
+                <Image
+                  src="/images/logo/Instagram.svg"
+                  alt="instagram"
+                  width={24}
+                  height={24}
+                  className={[
+                    "w-[16px] h-[16px]",
+                    "min-[744px]:w-[20px] min-[744px]:h-[20px]",
+                    "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                  ].join(" ")}
+                />
+                <p className="w-fit text-[#868686] font-regular tracking-[-4%] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
+                  {designer.contact.instagram}
+                </p>
+              </div>
+            )}
+          </div>
           </div>
         </div>
         <div
@@ -249,12 +255,19 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
                   className={[
                     "hidden min-[744px]:flex min-[744px]:gap-[20px]",
                     "w-full h-fit",
-                    "justify-between",
-                    "min-[1025px]:justify-start min-[1025px]:gap-[12px]",
+                    "justify-start",
+                    "min-[1025px]:gap-[12px]",
                   ].join(" ")}
                 >
                   {pair.map((p) => (
-                    <div key={p.id} className="flex-1">
+                    <div 
+                      key={p.id} 
+                      className={[
+                        "flex-1",
+                        pair.length === 1 ? "max-w-[calc((100%-20px)/2)]" : "",
+                        pair.length === 1 ? "min-[1025px]:max-w-[calc((100%-12px)/2)]" : "",
+                      ].join(" ")}
+                    >
                       <ProjectCard
                         slug={p.slug}
                         title={p.title}

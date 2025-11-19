@@ -57,7 +57,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           className={[
             "w-full h-fit flex flex-col-reverse",
             "gap-[23px]",
-            "min-[744px]:flex-col min-[744px]:px-[22px] min-[744px]:gap-[24px]",
+            "min-[744px]:flex-col min-[744px]:items-stretch min-[744px]:px-[22px] min-[744px]:gap-[24px]",
             "min-[1540px]:flex-row min-[1540px]:items-stretch min-[1540px]:px-[22px] min-[1540px]:gap-[48px]",
           ].join(" ")}
         >
@@ -123,6 +123,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           />
           {/*작품 정보 우측*/}
           <div
+            id = "작품 정보 우측"
             className={[
               "w-full h-fit flex flex-row",
               "gap-[16px]",
@@ -131,21 +132,20 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             ].join(" ")}
           >
             {/* 디자이너 프로필 이미지*/}
-            <div className="h-full flex flex-col">
-              <Image 
-                src={designer.profileImage} 
-                alt={designer.nameEn} 
-                width={160} 
-                height={160}
-                className={[
-                  "w-[160px] h-auto",
-                  "min-[744px]:w-[120px] min-[744px]:h-auto",
-                  "min-[1025px]:w-[160px] min-[1025px]:h-auto",
-                ].join(" ")}
+            <div id = "디자이너 프로필 이미지" className={[
+              "self-stretch flex-shrink-0",
+              "max-w-[120px]",
+              "min-[744px]:max-w-[105px]",
+              "min-[1025px]:max-w-[160px]",
+            ].join(" ")}>
+              <img
+                src={designer.profileImage}
+                alt={designer.nameEn}
+                className="h-full w-auto object-contain"
               />
             </div>
             {/* 디자이너 정보 영역*/}
-            <div className={[
+            <div id = "디자이너 정보 영역" className={[
               "w-fit h-fit flex flex-col",
               "gap-[27px] py-[10px]",
               "min-[744px]:gap-[16px] min-[744px]:py-0",
@@ -153,16 +153,16 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             ].join(" ")}>
               {/* 디자이너 이름과 소개글 영역*/}
               <div
-                className={[
+                id = "디자이너 이름과 소개글 영역" className={[
                   "w-fit h-fit flex flex-col",
-                  "gap-[27px]",
+                  "gap-[4px]",
                   "min-[744px]:flex-row min-[744px]:gap-[16px]",
                   "min-[1025px]:flex-col min-[1025px]:gap-[4px]",
                 ].join(" ")}
               >
                 {/* 디자이너 이름*/}
                 <h2
-                  className={[
+                  id = "디자이너 이름" className={[
                     "font-semibold text-black tracking-[-4%]",
                     "text-[16px]",
                     "min-[744px]:text-[20px] min-[744px]:font-bold",
@@ -173,7 +173,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 </h2>
                 {/* 디자이너 소개글(role)*/}
                 <p
-                  className={[
+                  id = "디자이너 소개글(role)" className={[
                     "font-regular text-[#858585] tracking-[-4%]",
                     "text-[14px]",
                     "min-[744px]:text-[16px]",
@@ -184,7 +184,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 </p>
               </div>
               {/* 디자이너 연락처 정보 영역*/}
-              <div className={[
+              <div id = "디자이너 연락처 정보 영역" className={[
                 "w-fit h-fit flex flex-col",
                 "gap-[10px]",
                 "min-[744px]:gap-[8px]",
@@ -192,7 +192,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 ].join(" ")}>
                 {/* 디자이너 이메일 정보 영역*/}
                 {designer.contact.email && (
-                  <div className={[
+                  <div id = "디자이너 이메일 정보 영역" className={[
                     "w-fit h-fit flex flex-row items-center",
                     "gap-[8px]",
                     "min-[744px]:gap-[14px]",
@@ -216,7 +216,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 )}
                 {/* 디자이너 비핸스 정보 영역*/}
                 {designer.contact.behance && (
-                  <div className={[
+                  <div id = "디자이너 비핸스 정보 영역" className={[
                     "w-fit h-fit flex flex-row items-center",
                     "max-w-full",
                     "gap-[8px]",
