@@ -11,8 +11,8 @@ export const projects: Project[] = [
     keywords: ["#Keyword1", "#Keyword2", "#Keyword3"],
     designerId: "designer-1",
     images: {
-      thumbnail: "/images/projects/thumbnails/project-1.jpg",
-      gallery: "/images/projects/gallery/project-1.jpg",
+      thumbnail: "/images/projects/thumbnails/project-1.png",
+      gallery: "/images/projects/gallery/project-1.png",
     },
   },
   {
@@ -25,8 +25,8 @@ export const projects: Project[] = [
     keywords: ["#Keyword1", "#Keyword2", "#Keyword3"],
     designerId: "designer-2",
     images: {
-      thumbnail: "/images/projects/thumbnails/project-2.jpg",
-      gallery: "/images/projects/gallery/project-2.jpg",
+      thumbnail: "/images/projects/thumbnails/project-2.png",
+      gallery: "/images/projects/gallery/project-2.png",
     },
   },
   {
@@ -39,8 +39,8 @@ export const projects: Project[] = [
     keywords: ["#Keyword1", "#Keyword2", "#Keyword3"],
     designerId: "designer-3",
     images: {
-      thumbnail: "/images/projects/thumbnails/project-3.jpg",
-      gallery: "/images/projects/gallery/project-3.jpg",
+      thumbnail: "/images/projects/thumbnails/project-3.png",
+      gallery: "/images/projects/gallery/project-3.png",
     },
   },
   {
@@ -53,8 +53,8 @@ export const projects: Project[] = [
     keywords: ["#Keyword1", "#Keyword2", "#Keyword3"],
     designerId: "designer-4",
     images: {
-      thumbnail: "/images/projects/thumbnails/project-4.jpg",
-      gallery: "/images/projects/gallery/project-4.jpg",
+      thumbnail: "/images/projects/thumbnails/project-4.png",
+      gallery: "/images/projects/gallery/project-4.png",
     },
   },
   {
@@ -67,8 +67,8 @@ export const projects: Project[] = [
     keywords: ["#Keyword1", "#Keyword2", "#Keyword3"],
     designerId: "designer-1",
     images: {
-      thumbnail: "/images/projects/thumbnails/project-5.jpg",
-      gallery: "/images/projects/gallery/project-5.jpg",
+      thumbnail: "/images/projects/thumbnails/project-5.png",
+      gallery: "/images/projects/gallery/project-5.png",
     },
   }
 ];

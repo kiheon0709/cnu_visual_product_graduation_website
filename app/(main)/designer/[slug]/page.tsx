@@ -244,6 +244,8 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
                     category={p.category}
                     designerName={designer?.nameKo || designer?.nameEn || ""}
                     imageUrl={p.images.thumbnail}
+                    description={p.description}
+                    keywords={p.keywords}
                     variant="full"
                   />
                 ))}
@@ -274,6 +276,8 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
                         category={p.category}
                         designerName={designer?.nameEn || ""}
                         imageUrl={p.images.thumbnail}
+                        description={p.description}
+                        keywords={p.keywords}
                         variant="full"
                       />
                     </div>

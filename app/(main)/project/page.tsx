@@ -115,6 +115,8 @@ export default function ProjectPage() {
                 category={project.category}
                 designerName={project.designer?.nameKo || ""}
                 imageUrl={project.images.thumbnail}
+                description={project.description}
+                keywords={project.keywords}
               />
             ))}
           </div>
@@ -126,20 +128,30 @@ export default function ProjectPage() {
               className={[
                 "hidden min-[744px]:flex",
                 "w-full h-fit",
-                "justify-between",
-                "min-[1025px]:justify-start min-[1025px]:gap-3",
+                "items-stretch",
+                "gap-[20px]",
+                "min-[1025px]:gap-3",
               ].join(" ")}
             >
               {pair.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  slug={project.slug}
-                  title={project.title}
-                  category={project.category}
-                  designerName={project.designer?.nameEn || ""}
-                  imageUrl={project.images.thumbnail}
-                />
+                <div key={project.id} className="flex-1 min-w-0">
+                  <ProjectCard
+                    slug={project.slug}
+                    title={project.title}
+                    category={project.category}
+                    designerName={project.designer?.nameEn || ""}
+                    imageUrl={project.images.thumbnail}
+                    description={project.description}
+                    keywords={project.keywords}
+                  />
+                </div>
               ))}
+              {pair.length === 1 && (
+                <div
+                  className="flex-1 min-w-0 opacity-0 pointer-events-none"
+                  aria-hidden="true"
+                />
+              )}
             </div>
           ))}
         </div>
