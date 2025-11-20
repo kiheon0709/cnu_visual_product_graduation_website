@@ -84,7 +84,7 @@ export default function ProjectCard({
         {/* 추후 이미지와 호버 텍스트 영역 */}
         <div
           className={[
-            "hidden min-[1025px]:block",
+            "hidden min-[744px]:block",
             "absolute inset-0",
             "bg-[#000000]/40",
             "opacity-0 group-hover:opacity-100",
@@ -94,7 +94,7 @@ export default function ProjectCard({
         />
         <div
           className={[
-            "hidden min-[1025px]:flex",
+            "hidden min-[744px]:flex",
             "absolute inset-0",
             "flex-col justify-between",
             "opacity-0 group-hover:opacity-100",
