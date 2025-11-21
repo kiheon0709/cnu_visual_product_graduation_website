@@ -50,10 +50,21 @@ export default function DesignerCard({
           fill
           className={[
             "object-cover object-top",
-            // "transition-transform duration-300",
-            // "group-hover:scale-[1.03]",
+            "transition-transform duration-300",
+            "min-[744px]:group-hover:scale-[1.05]",
           ].join(" ")}
           priority={priority}
+        />
+        <div
+          className={[
+            "hidden min-[744px]:block",
+            "absolute inset-0",
+            "bg-[#CAD7BB]/20",
+            "opacity-0 group-hover:opacity-100",
+            "transition-opacity duration-200 ease-out",
+            "pointer-events-none",
+          ].join(" ")}
+          aria-hidden="true"
         />
       </div>
 
