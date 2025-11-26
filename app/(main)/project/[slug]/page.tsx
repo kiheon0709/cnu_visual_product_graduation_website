@@ -136,7 +136,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           />
           {/*작품 정보 우측*/}
           <div
-            id = "작품 정보 우측"
+            id="작품 정보 우측"
             className={[
               "w-full h-fit flex flex-row",
               "gap-[16px]",
@@ -145,16 +145,19 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             ].join(" ")}
           >
             {/* 디자이너 프로필 이미지*/}
-            <div id = "디자이너 프로필 이미지" className={[
-              "self-stretch flex-shrink-0",
-              "max-w-[120px]",
-              "min-[744px]:max-w-[105px]",
-              "min-[1025px]:max-w-[160px]",
-            ].join(" ")}>
+            <div
+              id="디자이너 프로필 이미지"
+              className={[
+                "flex-shrink-0",
+                "max-w-[120px]",
+                "min-[744px]:max-w-[105px]",
+                "min-[1025px]:max-w-[160px]",
+              ].join(" ")}
+            >
               <img
                 src={designer.profileImage}
                 alt={designer.nameEn}
-                className="h-full w-auto object-contain"
+                className="w-full h-auto object-contain"
               />
             </div>
             {/* 디자이너 정보 영역*/}
@@ -303,18 +306,16 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         {/* 작품 사진 영역 */}
         <div
           id="작품 사진 영역"
-          className={[
-            "w-full flex flex-col",
-          ].join(" ")}
+          className={["w-full flex flex-col"].join(" ")}
         >
-          <Image 
-              src={project.images.gallery}
-              alt={project.title} 
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-auto"
-            />
+          <Image
+            src={project.images.gallery}
+            alt={project.title}
+            width={1920}
+            height={1080}
+            sizes="100vw"
+            className="w-full h-auto object-contain"
+          />
         </div>
       </section>
     </div>

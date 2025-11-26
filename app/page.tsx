@@ -11,19 +11,51 @@ export default function Home() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    
+
     video.muted = true;
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
-    
+
+    // 0초 지점 첫 프레임(검은 화면) 스킵용 타임 조정
+    const SEEK_TIME = 0.01;
+
     const tryPlay = async () => {
       try {
+        // 처음/루프 시작 시 살짝 앞으로 당겨서 재생 (검은 첫 프레임 방지)
+        if (video.currentTime < SEEK_TIME) {
+          try {
+            video.currentTime = SEEK_TIME;
+          } catch {
+            // iOS 등에서 currentTime 조정 실패 시 무시
+          }
+        }
         await video.play();
       } catch {
         // iOS/Safari에서 초기 프레임에선 거부될 수 있음 → 무시하고 이벤트에서 재시도
       }
     };
-    
+
+    const onLoadedMetadata = () => {
+      // 메타데이터 로드 후 바로 첫 프레임을 살짝 넘겨둠
+      try {
+        if (video.currentTime < SEEK_TIME) {
+          video.currentTime = SEEK_TIME;
+        }
+      } catch {
+        // silent
+      }
+    };
+
+    // 루프 시 0초로 돌아가면서 깜빡이는 것 방지
+    const onEnded = () => {
+      try {
+        video.currentTime = SEEK_TIME;
+      } catch {
+        // silent
+      }
+      tryPlay();
+    };
+
     // loadeddata 이벤트 사용 (canplay보다 빠름) - 첫 프레임만 로드되면 재생 시도
     const onLoadedData = () => {
       tryPlay();
@@ -38,10 +70,12 @@ export default function Home() {
     if (video.readyState >= 2) {
       tryPlay();
     }
-    
+
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    video.addEventListener("ended", onEnded);
     video.addEventListener("loadeddata", onLoadedData, { once: true });
     video.addEventListener("canplaythrough", onCanPlayThrough, { once: true });
-    
+
     // 가시성 전환 시 재시도(백→포그라운드)
     const onVis = () => {
       if (document.visibilityState === "visible") tryPlay();
@@ -54,9 +88,11 @@ export default function Home() {
       window.removeEventListener("touchstart", onFirstTouch);
     };
     window.addEventListener("touchstart", onFirstTouch, { passive: true });
-    
+
     return () => {
       document.removeEventListener("visibilitychange", onVis);
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("ended", onEnded);
       video.removeEventListener("loadeddata", onLoadedData);
       video.removeEventListener("canplaythrough", onCanPlayThrough);
       window.removeEventListener("touchstart", onFirstTouch);
