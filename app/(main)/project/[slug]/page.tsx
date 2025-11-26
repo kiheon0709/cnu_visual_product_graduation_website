@@ -35,7 +35,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       <section
         id="작품 상세 페이지 헤더 포스터"
         className={[
-          "hidden min-[1025px]:block",
+          "hidden min-[744px]:block",
+          "min-[744px]:h-[130px]",
           "min-[1025px]:h-[337px]",
           "w-full overflow-hidden bg-background-gray",
           "relative",
