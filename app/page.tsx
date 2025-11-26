@@ -111,11 +111,11 @@ export default function Home() {
         <div className="relative">
           <video
             ref={videoRef}
-            src={getSupabaseUrl("main/Moving_Poster.mp4")}
+            src={getSupabaseUrl("main/Moving_Poster_1.mp4")}
             className="main-poster-video object-contain"
             onError={(e) => {
               console.error('비디오 로드 에러:', e);
-              console.error('비디오 URL:', getSupabaseUrl("main/Moving_Poster.mp4"));
+              console.error('비디오 URL:', getSupabaseUrl("main/Moving_Poster_1.mp4"));
             }}
             autoPlay
             loop
