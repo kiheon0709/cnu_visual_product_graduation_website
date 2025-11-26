@@ -101,8 +101,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 "text-[12px]",
                 "min-[744px]:text-[16px]",
                 "min-[1025px]:text-[20px]",
-                // 1539px 이하 구간에서 설명 텍스트 박스를 전체 너비의 70%로 제한
-                "max-[1539px]:w-[70%] max-[1539px]:max-w-full",
+                // 1539px 이하 구간에서 설명 텍스트 박스를 전체 너비의 80%로 제한
+                "max-[1539px]:w-[80%] max-[1539px]:max-w-full",
               ].join(" ")}
             >
               {project.description}
