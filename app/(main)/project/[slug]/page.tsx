@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { getProjectWithDesigner } from "@/lib/utils/projects";
 import Link from "next/link";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 interface ProjectDetailPageProps {
   params: { slug: string };
@@ -37,8 +38,19 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           "hidden min-[1025px]:block",
           "min-[1025px]:h-[337px]",
           "w-full overflow-hidden bg-background-gray",
+          "relative",
         ].join(" ")}
-      />
+      >
+        {project.images?.header && (
+          <Image
+            src={project.images.header}
+            alt={`${project.title} 헤더 이미지`}
+            fill
+            className="object-cover"
+            priority
+          />
+        )}
+      </section>
 
       {/* 작품 본문 영역 */}
       <section
@@ -88,8 +100,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 "text-[12px]",
                 "min-[744px]:text-[16px]",
                 "min-[1025px]:text-[20px]",
-                // 1539px 이하 구간에서 설명 텍스트 박스 고정 너비(1540 시점 기준 폭에 준하는 값)
-                "max-[1539px]:w-[960px] max-[1539px]:max-w-full",
+                // 1539px 이하 구간에서 설명 텍스트 박스를 전체 너비의 70%로 제한
+                "max-[1539px]:w-[70%] max-[1539px]:max-w-full",
               ].join(" ")}
             >
               {project.description}
@@ -199,7 +211,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                     "min-[1025px]:gap-[16px]",
                   ].join(" ")}>
                     <Image 
-                      src="/images/logo/Email.svg" 
+                      src={getSupabaseUrl("logo/Email.svg")} 
                       alt="email" 
                       width={24} 
                       height={24}
@@ -216,53 +228,72 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 )}
                 {/* 디자이너 비핸스 정보 영역*/}
                 {designer.contact.behance && (
-                  <div id = "디자이너 비핸스 정보 영역" className={[
-                    "w-fit h-fit flex flex-row items-center",
-                    "max-w-full",
-                    "gap-[8px]",
-                    "min-[744px]:gap-[14px]",
-                    "min-[1025px]:gap-[16px]",
-                  ].join(" ")}>
-                    <Image 
-                      src="/images/logo/Behance.svg" 
-                      alt="behance" 
-                      width={24} 
-                      height={24}
+                  <a
+                    id="디자이너 비핸스 정보 영역"
+                    href={designer.contact.behance}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-fit h-fit"
+                  >
+                    <div
                       className={[
-                        "w-[16px] h-[12px]",
-                        "min-[744px]:w-[18px] min-[744px]:h-[18px]",
-                        "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                        "w-fit h-fit flex flex-row items-center",
+                        "max-w-full",
+                        "gap-[8px]",
+                        "min-[744px]:gap-[14px]",
+                        "min-[1025px]:gap-[16px]",
                       ].join(" ")}
-                    />
-                    <p className="text-[#858585] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
-                      {designer.contact.behance}
-                    </p>
-                  </div>
+                    >
+                      <Image
+                        src={getSupabaseUrl("logo/Behance.svg")}
+                        alt="behance"
+                        width={24}
+                        height={24}
+                        className={[
+                          "w-[16px] h-[12px]",
+                          "min-[744px]:w-[18px] min-[744px]:h-[18px]",
+                          "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                        ].join(" ")}
+                      />
+                      <p className="text-[#858585] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
+                        {designer.contact.behance}
+                      </p>
+                    </div>
+                  </a>
                 )}
                 {/* 디자이너 인스타그램 정보 영역*/}
                 {designer.contact.instagram && (
-                  <div
-                    className={[
-                      "w-fit h-fit flex flex-row items-center",
-                      "max-w-full",
-                      "gap-[8px]",
-                    ].join(" ")}
+                  <a
+                    href={`https://www.instagram.com/${designer.contact.instagram
+                      .replace(/^@/, "")
+                      .trim()}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-fit h-fit"
                   >
-                    <Image 
-                      src="/images/logo/Instagram.svg" 
-                      alt="instagram" 
-                      width={24} 
-                      height={24}
+                    <div
                       className={[
-                        "w-[16px] h-[12px]",
-                        "min-[744px]:w-[18px] min-[744px]:h-[18px]",
-                        "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                        "w-fit h-fit flex flex-row items-center",
+                        "max-w-full",
+                        "gap-[8px]",
                       ].join(" ")}
-                    />
-                    <p className="text-[#858585] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
-                      {designer.contact.instagram}
-                    </p>
-                  </div>
+                    >
+                      <Image
+                        src={getSupabaseUrl("logo/Instagram.svg")}
+                        alt="instagram"
+                        width={24}
+                        height={24}
+                        className={[
+                          "w-[16px] h-[12px]",
+                          "min-[744px]:w-[18px] min-[744px]:h-[18px]",
+                          "min-[1025px]:w-[24px] min-[1025px]:h-[24px]",
+                        ].join(" ")}
+                      />
+                      <p className="text-[#858585] text-[12px] min-[744px]:text-[16px] min-[1025px]:text-[20px] break-words">
+                        {designer.contact.instagram}
+                      </p>
+                    </div>
+                  </a>
                 )}
               </div>
             </div>
@@ -276,7 +307,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           ].join(" ")}
         >
           <Image 
-              src="/images/projects/gallery/작품설명사진.png"
+              src={project.images.gallery}
               alt={project.title} 
               width={0}
               height={0}

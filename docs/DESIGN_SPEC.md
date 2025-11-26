@@ -81,7 +81,7 @@
 ### 공통 요소
 - 페이지 배경색: `#FFFFFF`.
 - 섹션 구성: 상단 헤더 이미지 → 카테고리 필터 탭 → 프로젝트 카드 그리드 → 하단 푸터.
-- 필터 탭 항목: `ALL`(활성), `Capstone`, `Suhyup`, `Goods`. 활성은 Black, 비활성은 `#C2C2C2`.
+- 필터 탭 항목: `ALL`(활성), `Capstone`, `Suhyup`, `Personal`. 활성은 Black, 비활성은 `#C2C2C2`.
 - 카드 공통 구조
   - 상단 썸네일 영역(배경 `#D9D9D9`) + 하단 텍스트 정보.
   - 프로젝트명 Poppins SemiBold, 카테고리 및 참여자명 Poppins Regular, 색상 `#000000` / `#A8A8A8`.

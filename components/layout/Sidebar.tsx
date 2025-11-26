@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ENABLE_MENU_ON_HOME } from "@/lib/config";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 type Breakpoint = "mobile" | "tablet-home" | "tablet-detail" | "pc";
 
@@ -283,7 +284,7 @@ export default function Sidebar() {
         {/* 모바일: 상단 컨테이너 - 로고 + 문구 */}
         <Link href="/" aria-label="홈으로 이동" className="max-[743px]:flex max-[743px]:items-center max-[743px]:justify-center max-[743px]:w-full cursor-pointer select-none">
           <Image
-            src="/images/logo/cnu-logo.png"
+            src={getSupabaseUrl("logo/cnu-logo.png")}
             alt="충남대학교 로고"
             width={48}
             height={48}
@@ -341,7 +342,7 @@ export default function Sidebar() {
         {/* 웹 버전: 상단 고정 - 로고 + 문구 컨테이너 */}
         <div className="flex items-start cursor-pointer select-none">
           <Image
-            src="/images/logo/cnu-logo.png"
+            src={getSupabaseUrl("logo/cnu-logo.png")}
             alt="충남대학교 로고"
             width={48}
             height={48}
@@ -527,7 +528,7 @@ export default function Sidebar() {
           >
             {/* 충남대학교 */}
             <Image
-              src="/images/logo/cnu-logo.png"
+              src={getSupabaseUrl("logo/cnu-logo.png")}
               alt="충남대학교 로고"
               width={36}
               height={36}

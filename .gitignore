@@ -53,3 +53,4 @@ pnpm-debug.log*
 .turbo/
 
 
+/public/images/

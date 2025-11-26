@@ -1,5 +1,7 @@
 import DesignerCard from "@/components/designer/DesignerCard";
 import { designers } from "@/lib/data/designers";
+import Image from "next/image";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 export default function DesignerPage() {
   return (
@@ -10,8 +12,17 @@ export default function DesignerPage() {
           "hidden min-[1025px]:block",
           "min-[1025px]:h-[337px]",
           "w-full overflow-hidden bg-background-gray",
+          "relative",
         ].join(" ")}
-      />
+      >
+        <Image
+          src={getSupabaseUrl("designers/designer_page_header.png")}
+          alt="Designer Page Header"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
       <section
         id="디자이너 페이지 본문"
         className={[

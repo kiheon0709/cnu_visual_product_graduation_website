@@ -103,7 +103,6 @@ export default function ProjectCard({
           ].join(" ")}
           style={{
             padding: `${scaledPadding}px`,
-            gap: `${scaledGap}px`,
           }}
         >
           <p
@@ -112,6 +111,7 @@ export default function ProjectCard({
               "font-normal",
               "leading-[1.4]",
               "w-full",
+              "line-clamp-5",
             ].join(" ")}
             style={{
               fontSize: `${scaledDescriptionFont}px`,

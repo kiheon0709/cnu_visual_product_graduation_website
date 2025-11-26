@@ -3,7 +3,7 @@ export interface Project {
   slug: string;
   title: string;
   titleEn?: string;
-  category: "Capstone" | "Suhyup" | "Goods";
+  category: "Capstone" | "Suhyup" | "Personal";
   description: string;
   keywords: string[];
   designerId: string;
@@ -21,6 +21,7 @@ export interface Designer {
   nameKo?: string;
   role: string;
   profileImage: string;
+  headerImageUrl?: string;
   introduction: string;
   contact: {
     email: string | null;

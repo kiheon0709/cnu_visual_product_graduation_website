@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Footer from "@/components/layout/Footer";
 import { SHOW_PREPARING_MESSAGE } from "@/lib/config";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -74,8 +75,12 @@ export default function Home() {
         <div className="relative">
           <video
             ref={videoRef}
-            src="/images/main/main.mp4"
+            src={getSupabaseUrl("main/Moving_Poster.mp4")}
             className="main-poster-video object-contain"
+            onError={(e) => {
+              console.error('비디오 로드 에러:', e);
+              console.error('비디오 URL:', getSupabaseUrl("main/Moving_Poster.mp4"));
+            }}
             autoPlay
             loop
             muted

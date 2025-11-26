@@ -8,6 +8,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 type Breakpoint = "pc" | "tablet" | "mobile";
 
@@ -265,7 +266,7 @@ export default function Footer() {
         <div style={brandBlockStyle}>
           <div style={logoRowStyle}>
             <Image
-              src="/images/logo/cnu-logo.png"
+              src={getSupabaseUrl("logo/cnu-logo.png")}
               alt="충남대학교 로고"
               width={logoSize}
               height={logoSize}

@@ -20,7 +20,7 @@ export function getProjectBySlug(slug: string): Project | undefined {
  * 카테고리로 프로젝트를 필터링합니다.
  */
 export function getProjectsByCategory(
-  category: "all" | "Capstone" | "Suhyup" | "Goods"
+  category: "all" | "Capstone" | "Suhyup" | "Personal"
 ): Project[] {
   if (category === "all") {
     return projects;
@@ -53,7 +53,7 @@ export function getProjectWithDesigner(slug: string) {
  * 카테고리로 필터링하고 디자이너 정보도 함께 가져옵니다.
  */
 export function getProjectsByCategoryWithDesigners(
-  category: "all" | "Capstone" | "Suhyup" | "Goods"
+  category: "all" | "Capstone" | "Suhyup" | "Personal"
 ) {
   const filteredProjects = getProjectsByCategory(category);
   return filteredProjects.map((project) => ({

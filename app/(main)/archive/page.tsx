@@ -1,5 +1,7 @@
 import ArchiveCard from "@/components/archive/ArchiveCard";
 import { getAllArchives } from "@/lib/utils/archive";
+import Image from "next/image";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 export default function ArchivePage() {
   const archives = getAllArchives();
@@ -12,8 +14,17 @@ export default function ArchivePage() {
           "hidden min-[744px]:block",
           "min-[744px]:h-[260px] min-[1025px]:h-[337px]",
           "w-full overflow-hidden bg-background-gray",
+          "relative",
         ].join(" ")}
-      />
+      >
+        <Image
+          src={getSupabaseUrl("archive/archive_page_header.png")}
+          alt="Archive Header"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
       <section
         id="아카이브 페이지 본문"
         className={[

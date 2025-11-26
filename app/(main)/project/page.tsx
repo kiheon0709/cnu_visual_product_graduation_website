@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import ProjectCard from "@/components/project/ProjectCard";
 import { getProjectsByCategoryWithDesigners } from "@/lib/utils/projects";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 const CATEGORY_TABS = [
   { label: "ALL", value: "all" },
   { label: "Capstone", value: "Capstone" },
   { label: "Suhyup", value: "Suhyup" },
-  { label: "Goods", value: "Goods" },
+  { label: "Personal", value: "Personal" },
 ];
 
 export default function ProjectPage() {
@@ -17,7 +19,7 @@ export default function ProjectPage() {
   // 카테고리로 필터링된 프로젝트와 디자이너 정보 가져오기
   const projectsWithDesigners = useMemo(() => {
     return getProjectsByCategoryWithDesigners(
-      activeCategory as "all" | "Capstone" | "Suhyup" | "Goods"
+      activeCategory as "all" | "Capstone" | "Suhyup" | "Personal"
     );
   }, [activeCategory]);
 
@@ -38,8 +40,17 @@ export default function ProjectPage() {
           "hidden min-[1025px]:block",
           "min-[1025px]:h-[337px]",
           "w-full overflow-hidden bg-background-gray",
+          "relative",
         ].join(" ")}
-      />
+      >
+        <Image
+          src={getSupabaseUrl("project/project_page_header.png")}
+          alt="Project Page Header"
+          fill
+          className="object-cover"
+          priority
+        />
+      </section>
       <section
         id="프로젝트 페이지 본문"
         className={[

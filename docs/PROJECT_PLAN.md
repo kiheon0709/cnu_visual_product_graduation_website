@@ -31,7 +31,7 @@
 - 좌측: 고정 메뉴바 (동일)
 - 우측: 메인 콘텐츠 영역
   - 상단 헤더 이미지 (1520px × 337px)
-  - 카테고리 필터 (ALL, Capstone, Suhyup, Goods)
+  - 카테고리 필터 (ALL, Capstone, Suhyup, Personal)
   - 프로젝트 그리드 (2열)
 
 **기능:**
@@ -39,7 +39,7 @@
   - ALL: 전체 프로젝트 표시
   - Capstone: 캡스톤 프로젝트만 필터링
   - Suhyup: 수협 프로젝트만 필터링
-  - Goods: 굿즈 프로젝트만 필터링
+  - Personal: 퍼스널 프로젝트만 필터링
 - **프로젝트 카드**:
   - 프로젝트 썸네일 이미지
   - 프로젝트명, 카테고리, 디자이너명 표시
@@ -281,7 +281,7 @@
   slug: string
   title: string
   titleEn?: string
-  category: 'Capstone' | 'Shyup' | 'Goods'
+  category: 'Capstone' | 'Shyup' | 'Personal'
   description: string
   keywords: string[]
   designer: {

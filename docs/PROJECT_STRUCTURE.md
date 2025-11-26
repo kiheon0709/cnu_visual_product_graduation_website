@@ -258,7 +258,7 @@ interface Project {
   slug: string
   title: string
   titleEn?: string
-  category: 'Capstone' | 'Suhyup' | 'Goods'
+  category: 'Capstone' | 'Suhyup' | 'Personal'
   description: string
   keywords: string[]
   designer: {

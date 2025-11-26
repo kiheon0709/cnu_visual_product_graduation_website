@@ -1,13 +1,15 @@
 import { Designer } from "@/types";
+import { getSupabaseUrl } from "@/lib/utils/supabase";
 
 export const designers: Designer[] = [
   {
     id: "designer-1",
-    slug: "kim-dooyi",
-    nameEn: "Dooyi Kim",
+    slug: "kim-doyi",
+    nameEn: "Kim Doyi",
     nameKo: "김도이",
     role: "Product designer",
-    profileImage: "/images/designers/profile/김도이.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/KimDoyi_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/KimDoyi.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글",
     contact: {
       email: "designer1@test.com",
@@ -19,10 +21,11 @@ export const designers: Designer[] = [
   {
     id: "designer-2",
     slug: "kim-minju",
-    nameEn: "Minju Kim",
+    nameEn: "KimMinju",
     nameKo: "김민주",
     role: "Product designer",
-    profileImage: "/images/designers/profile/김민주.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/KimMinju_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/KimMinju.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer2@test.com",
@@ -34,10 +37,11 @@ export const designers: Designer[] = [
   {
     id: "designer-3",
     slug: "park-jinhyeon",
-    nameEn: "Jinhyeon Park",
+    nameEn: "ParkJinhyeon",
     nameKo: "박진현",
     role: "Product designer",
-    profileImage: "/images/designers/profile/박진현.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/ParkJinhyeon_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/ParkJinhyeon.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer3@test.com",
@@ -49,25 +53,27 @@ export const designers: Designer[] = [
   {
     id: "designer-4",
     slug: "bae-yujin",
-    nameEn: "Yujin Bae",
+    nameEn: "BaeYujin",
     nameKo: "배유진",
     role: "Product designer",
-    profileImage: "/images/designers/profile/배유진.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/BaeYujin_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/BaeYujin.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
-      email: "designer4@test.com",
-      behance: null,
-      instagram: "@designer4",
+      email: "yujinbae0204@gmail.com",
+      behance: "https://www.behance.net/8857febb",
+      instagram: "@drmin0_a",
     },
     projectIds: [],
   },
   {
     id: "designer-5",
     slug: "lee-gyeonhong",
-    nameEn: "Gyeonhong Lee",
+    nameEn: "LeeGyeonhong",
     nameKo: "이건홍",
     role: "Product designer",
-    profileImage: "/images/designers/profile/이건홍.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/LeeGyeonhong_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/LeeGyeonhong.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: null,
@@ -79,10 +85,11 @@ export const designers: Designer[] = [
   {
     id: "designer-6",
     slug: "lee-junha",
-    nameEn: "Junha Lee",
+    nameEn: "LeeJunha",
     nameKo: "이준하",
     role: "Product designer",
-    profileImage: "/images/designers/profile/이준하.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/LeeJunha_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/LeeJunha.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: "designer6@test.com",
@@ -94,10 +101,11 @@ export const designers: Designer[] = [
   {
     id: "designer-7",
     slug: "heo-taesun",
-    nameEn: "Taesun Heo",
+    nameEn: "HeoTaeseon",
     nameKo: "허태선",
     role: "Product designer",
-    profileImage: "/images/designers/profile/허태선.jpg",
+    headerImageUrl: getSupabaseUrl("designers/header/HeoTaeseon_designer_header.png"),
+    profileImage: getSupabaseUrl("designers/profile/HeoTaeseon.jpg"),
     introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
     contact: {
       email: null,
