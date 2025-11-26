@@ -143,24 +143,27 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               "w-full h-fit flex flex-row",
               "gap-[16px]",
               "min-[744px]:gap-[20px]",
-              "min-[1540px]:w-fit min-[1540px]:flex-shrink-0 min-[1540px]:gap-[24px]",
+              "min-[1540px]:w-fit min-[1540px]:flex-shrink-0 min-[1540px]:gap-[24px] min-[1540px]:pt-[4px]",
             ].join(" ")}
           >
-            {/* 디자이너 프로필 이미지*/}
+          {/* 디자이너 프로필 이미지*/}
             <div
               id="디자이너 프로필 이미지"
               className={[
-                "flex-shrink-0",
-                "max-w-[130px]",
-                "min-[744px]:max-w-[105px]",
-                "min-[1025px]:max-w-[160px]",
+              "flex-shrink-0",
+              // 정사각형 프로필 박스
+              "w-[160px] h-[160px]",
+              "min-[744px]:w-[135px] min-[744px]:h-[135px]",
+              "min-[1025px]:w-[210px] min-[1025px]:h-[210px]",
               ].join(" ")}
             >
-              <img
-                src={designer.profileImage}
-                alt={designer.nameEn}
-                className="w-full h-auto object-contain"
-              />
+            <img
+              src={designer.profileImage}
+              alt={designer.nameEn}
+              // 위에서 아주 살짝만 잘리고, 전체적으로는 위쪽이 더 많이 보이도록 위치 조정
+              className="w-full h-full object-cover"
+              style={{ objectPosition: "50% 20%" }}
+            />
             </div>
             {/* 디자이너 정보 영역*/}
             <div id = "디자이너 정보 영역" className={[

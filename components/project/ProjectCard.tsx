@@ -45,7 +45,7 @@ export default function ProjectCard({
 
   const scaledPadding = 50 * pcScale;
   const scaledGap = 120 * pcScale;
-  const scaledDescriptionFont = 26 * pcScale;
+  const scaledDescriptionFont = 22 * pcScale;
   const scaledKeywordFont = 26 * pcScale;
   const scaledKeywordGap = 36 * pcScale;
 
@@ -108,8 +108,8 @@ export default function ProjectCard({
           <p
             className={[
               "text-white",
-              "font-normal",
-              "leading-[1.4]",
+              "font-light",
+              "leading-[1.7]",
               "w-full",
               "line-clamp-5",
             ].join(" ")}
