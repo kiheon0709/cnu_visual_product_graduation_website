@@ -59,7 +59,7 @@ export default function DesignerCard({
           className={[
             "hidden min-[744px]:block",
             "absolute inset-0",
-            "bg-[#CAD7BB]/20",
+            "bg-[#BADAFF]/20",
             "opacity-0 group-hover:opacity-100",
             "transition-opacity duration-200 ease-out",
             "pointer-events-none",
