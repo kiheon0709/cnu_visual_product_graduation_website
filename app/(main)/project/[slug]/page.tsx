@@ -103,6 +103,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
                 "min-[1025px]:text-[20px]",
                 // 1539px 이하 구간에서 설명 텍스트 박스를 전체 너비의 80%로 제한
                 "max-[1539px]:w-[80%] max-[1539px]:max-w-full",
+                // description 내 \n 을 실제 줄바꿈으로 표시
+                "whitespace-pre-line",
               ].join(" ")}
             >
               {project.description}
@@ -149,7 +151,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               id="디자이너 프로필 이미지"
               className={[
                 "flex-shrink-0",
-                "max-w-[120px]",
+                "max-w-[130px]",
                 "min-[744px]:max-w-[105px]",
                 "min-[1025px]:max-w-[160px]",
               ].join(" ")}
