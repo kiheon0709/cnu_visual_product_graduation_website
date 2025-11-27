@@ -19,8 +19,26 @@ export const projects: Project[] = [
     images: {
       thumbnail: getSupabaseUrl("project/project-1/thumbnail.png"),
       header: getSupabaseUrl("project/project-1/work_header.png"),
-      gallery: getSupabaseUrl("project/project-1/work_detail_1.png"),
+      // 작품 상세 설명 포스터 이미지 배열
+      project_detail_poster: [
+        getSupabaseUrl("project/project-1/work_detail_1.png"),
+        getSupabaseUrl("project/project-1/work_detail_2.png"),
+      ],
     },
+    // 유튜브 링크 (여러개일 수 있음)
+    youtubeUrls: ["https://youtu.be/iD6eA7ShjsA?si=UlZeByGh6WB3YNdz"],
+
+    // 배치 순서
+    layoutOrder: ["poster", "youtube", "poster"],
+    // 예시: 포스터-유튜브영상-포스터
+    // layoutOrder: ["poster", "youtube", "poster"],
+    // youtubeUrls: ["https://www.youtube.com/watch?v=example"],
+    // 예시: 포스터-포스터-영상
+    // layoutOrder: ["poster", "poster", "youtube"],
+    // youtubeUrls: ["https://www.youtube.com/watch?v=example"],
+
+    // 작품 설명 영역 배경색 (선택사항)
+    descriptionBackgroundColor: "#000000", 
   },
 ];
 

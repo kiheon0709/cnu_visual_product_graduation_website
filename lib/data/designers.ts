@@ -58,7 +58,7 @@ export const designers: Designer[] = [
     role: "Product designer",
     headerImageUrl: getSupabaseUrl("designers/header/BaeYujin_designer_header.png"),
     profileImage: getSupabaseUrl("designers/profile/BaeYujin.jpg"),
-    introduction: "소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개소개글소개글소개글소개글소개개글소개글소개개글소소개글소개글소개글소개글소개개글소개글소개개글소개글소개개글소개글소",
+    introduction: "안녕하세요 배유진입니다.",
     contact: {
       email: "yujinbae0204@gmail.com",
       behance: "https://www.behance.net/8857febb",

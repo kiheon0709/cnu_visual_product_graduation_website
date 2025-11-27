@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getProjectWithDesigner } from "@/lib/utils/projects";
 import Link from "next/link";
 import { getSupabaseUrl } from "@/lib/utils/supabase";
+import { useMemo } from "react";
 
 interface ProjectDetailPageProps {
   params: { slug: string };
@@ -28,6 +29,53 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
   }
 
   const { designer, ...project } = projectData;
+
+  // 유튜브 URL을 embed 형식으로 변환하는 함수
+  const getYoutubeEmbedUrl = (url: string): string => {
+    // https://www.youtube.com/watch?v=VIDEO_ID 형식을 embed 형식으로 변환
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = match && match[2].length === 11 ? match[2] : null;
+    
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    // 만약 이미 embed 형식이거나 변환 실패시 원본 URL 반환
+    return url;
+  };
+
+  // layoutOrder에 따라 컨텐츠 배열 생성
+  const contentItems = useMemo(() => {
+    let posterIndex = 0;
+    let youtubeIndex = 0;
+    
+    return project.layoutOrder.map((item, index) => {
+      if (item === "poster") {
+        const posterUrl = project.images.project_detail_poster[posterIndex];
+        const currentPosterIndex = posterIndex;
+        posterIndex++;
+        
+        return {
+          type: "poster" as const,
+          key: `poster-${index}`,
+          posterUrl,
+          posterIndex: currentPosterIndex,
+        };
+      } else if (item === "youtube") {
+        const youtubeUrl = project.youtubeUrls?.[youtubeIndex];
+        const currentYoutubeIndex = youtubeIndex;
+        youtubeIndex++;
+        
+        return {
+          type: "youtube" as const,
+          key: `youtube-${index}`,
+          youtubeUrl,
+          youtubeIndex: currentYoutubeIndex,
+        };
+      }
+      return null;
+    }).filter((item): item is NonNullable<typeof item> => item !== null);
+  }, [project.layoutOrder, project.images.project_detail_poster, project.youtubeUrls]);
 
   return (
     <div id="project-detail-page" className="w-full min-h-screen flex flex-col">
@@ -345,15 +393,51 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         <div
           id="작품 사진 영역"
           className={["w-full flex flex-col"].join(" ")}
+          style={{ backgroundColor: project.descriptionBackgroundColor || "#ffffff" }}
         >
-          <Image
-            src={project.images.gallery}
-            alt={project.title}
-            width={1920}
-            height={1080}
-            sizes="100vw"
-            className="w-full h-auto object-contain"
-          />
+          {contentItems.map((item) => {
+            const backgroundColor = project.descriptionBackgroundColor || "#ffffff";
+            
+            if (item.type === "poster") {
+              return (
+                <div
+                  key={item.key}
+                  className={["w-full flex flex-col"].join(" ")}
+                  style={{ backgroundColor }}
+                >
+                  {item.posterUrl && (
+                    <Image
+                      src={item.posterUrl}
+                      alt={`${project.title} 포스터 ${item.posterIndex + 1}`}
+                      width={1920}
+                      height={1080}
+                      sizes="100vw"
+                      className="w-full h-auto object-contain"
+                    />
+                  )}
+                </div>
+              );
+            } else if (item.type === "youtube") {
+              return (
+                <div
+                  key={item.key}
+                  className={["w-full aspect-video px-[40px] py-[22px] flex"].join(" ")}
+                  style={{ backgroundColor }}
+                >
+                  {item.youtubeUrl && (
+                    <iframe
+                      src={getYoutubeEmbedUrl(item.youtubeUrl)}
+                      title={`${project.title} 유튜브 영상 ${item.youtubeIndex + 1}`}
+                      className="w-full flex-1"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
       </section>
     </div>
