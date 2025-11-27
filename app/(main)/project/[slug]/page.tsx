@@ -14,22 +14,6 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
   const { slug } = params;
   const projectData = getProjectWithDesigner(slug);
 
-  // 프로젝트가 없으면 404
-  if (!projectData || !projectData.designer) {
-    return (
-      <div className="w-full min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">프로젝트를 찾을 수 없습니다</h1>
-          <Link href="/project" className="text-blue-500 hover:underline">
-            프로젝트 목록으로 돌아가기
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  const { designer, ...project } = projectData;
-
   // 유튜브 URL을 embed 형식으로 변환하는 함수
   const getYoutubeEmbedUrl = (url: string): string => {
     // https://www.youtube.com/watch?v=VIDEO_ID 형식을 embed 형식으로 변환
@@ -44,8 +28,11 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     return url;
   };
 
-  // layoutOrder에 따라 컨텐츠 배열 생성
+  // layoutOrder에 따라 컨텐츠 배열 생성 (Hooks는 항상 최상위에서 호출되어야 함)
   const contentItems = useMemo(() => {
+    if (!projectData) return [];
+    
+    const { designer, ...project } = projectData;
     let posterIndex = 0;
     let youtubeIndex = 0;
     
@@ -75,7 +62,23 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
       }
       return null;
     }).filter((item): item is NonNullable<typeof item> => item !== null);
-  }, [project.layoutOrder, project.images.project_detail_poster, project.youtubeUrls]);
+  }, [projectData]);
+
+  // 프로젝트가 없으면 404
+  if (!projectData || !projectData.designer) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">프로젝트를 찾을 수 없습니다</h1>
+          <Link href="/project" className="text-blue-500 hover:underline">
+            프로젝트 목록으로 돌아가기
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const { designer, ...project } = projectData;
 
   return (
     <div id="project-detail-page" className="w-full min-h-screen flex flex-col">
