@@ -4,6 +4,7 @@ export interface Project {
   title: string;
   titleEn?: string;
   category: "Capstone" | "Suhyup" | "Personal";
+  projectType?: string;
   description: string;
   keywords: string[];
   designerId: string;

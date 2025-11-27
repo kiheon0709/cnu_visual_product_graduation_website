@@ -274,6 +274,7 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
                     slug={p.slug}
                     title={p.title}
                     category={p.category}
+                    projectType={p.projectType}
                     designerName={designer?.nameKo || designer?.nameEn || ""}
                     imageUrl={p.images.thumbnail}
                     description={p.description}
@@ -306,6 +307,7 @@ export default function DesignerDetailPage({ params }: DesignerDetailPageProps) 
                         slug={p.slug}
                         title={p.title}
                         category={p.category}
+                        projectType={p.projectType}
                         designerName={designer?.nameEn || ""}
                         imageUrl={p.images.thumbnail}
                         description={p.description}

@@ -7,6 +7,7 @@ interface ProjectCardProps {
   slug?: string;
   title?: string;
   category?: string;
+  projectType?: string;
   designerName?: string;
   imageUrl?: string;
   description?: string;
@@ -18,6 +19,7 @@ export default function ProjectCard({
   slug,
   title = "프로젝트명",
   category = "PRODUCT",
+  projectType,
   designerName = "홍길동",
   imageUrl,
   description,
@@ -172,7 +174,7 @@ export default function ProjectCard({
               "min-[1025px]:text-[20px]",
             ].join(" ")}
           >
-            {category}
+            {projectType || category}
           </span>
         </div>
 

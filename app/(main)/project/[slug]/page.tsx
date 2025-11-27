@@ -424,7 +424,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               return (
                 <div
                   key={item.key}
-                  className={["w-full aspect-video px-[40px] py-[22px] flex"].join(" ")}
+                  className={["w-full aspect-video px-[40px] py-[40px] flex"].join(" ")}
                   style={{ backgroundColor }}
                 >
                   {item.youtubeUrl && (

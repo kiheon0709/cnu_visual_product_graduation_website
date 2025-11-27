@@ -125,6 +125,7 @@ export default function ProjectPage() {
                 slug={project.slug}
                 title={project.title}
                 category={project.category}
+                projectType={project.projectType}
                 designerName={project.designer?.nameKo || ""}
                 imageUrl={project.images.thumbnail}
                 description={project.description}
@@ -151,6 +152,7 @@ export default function ProjectPage() {
                     slug={project.slug}
                     title={project.title}
                     category={project.category}
+                    projectType={project.projectType}
                     designerName={project.designer?.nameEn || ""}
                     imageUrl={project.images.thumbnail}
                     description={project.description}
