@@ -88,27 +88,60 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               className={[
                 "font-bold text-black tracking-[-4%]",
                 "text-[16px]",
-                "min-[744px]:text-[28px] min-[744px]:leading-[52px]",
-                "min-[1025px]:text-[40px] min-[1025px]:leading-[52px]",
+                "min-[744px]:text-[26px] min-[744px]:leading-[52px]",
+                "min-[1025px]:text-[36px] min-[1025px]:leading-[52px]",
               ].join(" ")}
             >
               {project.title}
             </h1>
             {/* 작품 설명 */}
-            <p
+            <div
               className={[
-                "font-medium text-[#858585] tracking-[-4%]",
-                "text-[12px]",
-                "min-[744px]:text-[16px]",
-                "min-[1025px]:text-[20px]",
+                "flex flex-col",
                 // 1539px 이하 구간에서 설명 텍스트 박스를 전체 너비의 80%로 제한
                 "max-[1539px]:w-[80%] max-[1539px]:max-w-full",
-                // description 내 \n 을 실제 줄바꿈으로 표시
-                "whitespace-pre-line",
               ].join(" ")}
             >
-              {project.description}
-            </p>
+              {project.description
+                .split(/\n\n+/)
+                .filter((para) => para.trim())
+                .flatMap((paragraph, index) => {
+                  const paragraphElement = (
+                    <p
+                      key={`para-${index}`}
+                      className={[
+                        "font-medium text-[#858585] tracking-[-4%]",
+                        "text-[12px]",
+                        "min-[744px]:text-[14px] min-[744px]:leading-[170%]",
+                        "min-[1025px]:text-[20px] min-[1025px]:leading-[170%]",
+                        // description 내 \n 을 실제 줄바꿈으로 표시
+                        "whitespace-pre-line",
+                      ].join(" ")}
+                    >
+                      {paragraph.trim()}
+                    </p>
+                  );
+
+                  // 문단 사이에 빈 줄 추가 (행간 60%, 모바일 제외)
+                  if (index > 0) {
+                    return [
+                      <div
+                        key={`spacer-${index}`}
+                        className={[
+                          "hidden min-[744px]:block",
+                          "min-[744px]:text-[14px] min-[744px]:leading-[60%]",
+                          "min-[1025px]:text-[20px] min-[1025px]:leading-[60%]",
+                        ].join(" ")}
+                        aria-hidden="true"
+                      >
+                        <br />
+                      </div>,
+                      paragraphElement,
+                    ];
+                  }
+                  return [paragraphElement];
+                })}
+            </div>
             {/*키워드 영역*/}
             <div
               className={[
